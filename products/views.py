@@ -66,10 +66,12 @@ class CreateListProductView(View, CustomRequestUtil):
         self.template_name = "shop.html"
         self.context_object_name = 'products'
 
+        category = kwargs.get('name', None)
+
         product_service = ProductService(self.request)
 
         return self.process_request(
-            request, target_function=product_service.fetch_list
+            request, target_function=product_service.fetch_list, category=category
         )
 
 class AddOrRemoveFromWishlistView(View, CustomRequestUtil):

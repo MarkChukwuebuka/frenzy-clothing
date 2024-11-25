@@ -1,0 +1,202 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block marquee %}{% endblock marquee %}
+
+{% block content %}
+
+
+            <!-- Body Container -->
+            <div id="page-content"> 
+                <!--Page Header-->
+                <div class="page-header text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
+                                <div class="page-title"><h1>Faq's</h1></div>
+                                <!--Breadcrumbs-->
+                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i>Pages</span><span class="main-title fw-bold"><i class="icon anm anm-angle-right-l"></i>Faq's</span></div>
+                                <!--End Breadcrumbs-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Page Header-->
+
+                <!--Main Content-->
+                <div class="container">
+                    <!-- Frequently Content -->
+                    <div class="row help-center mb-4 mb-md-0">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-6 mx-auto">
+                            <h2 class="mb-3 text-center">Frequently Asked Questions</h2>
+                            <form class="frequently-search" id="frequentlysearch" action="#" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-group-field" name="search" value="" placeholder="Search…" required />
+                                    <button type="submit" class="input-group-btn btn btn-secondary" name="search">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="section help-store-info row g-3 justify-content-center row-cols-xl-5 row-cols-lg-5 row-cols-md-4 row-cols-sm-2 row-cols-1">
+                        <div class="store-info-item d-flex align-items-center">
+                            <div class="icon d-flex align-items-center me-3"><i class="icon anm anm-truck-line fs-3"></i></div>
+                            <div class="content">
+                                <h5 class="title m-0 body-font">Shipping &amp; Orders</h5>
+                            </div>
+                        </div>
+                        <div class="store-info-item d-flex align-items-center">
+                            <div class="icon d-flex align-items-center me-3"><i class="icon anm anm-vh-bus-l fs-3"></i></div>
+                            <div class="content">
+                                <h5 class="title m-0 body-font">Exchanges &amp; Returns</h5>
+                            </div>
+                        </div>
+                        <div class="store-info-item d-flex align-items-center">
+                            <div class="icon d-flex align-items-center me-3"><i class="icon anm anm-credit-card-l fs-3"></i></div>
+                            <div class="content">
+                                <h5 class="title m-0 body-font">Payments Privacy</h5>
+                            </div>
+                        </div>
+                        <div class="store-info-item d-flex align-items-center">
+                            <div class="icon d-flex align-items-center me-3"><i class="icon anm anm-user-circle-o fs-3"></i></div>
+                            <div class="content">
+                                <h5 class="title m-0 body-font">Account Settings</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Frequently Content -->
+
+                    <!-- Faq's Style -->
+                    <div class="row faqs-style mt-4 mt-md-0">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-10 mx-auto">
+                            <div class="accordion" id="accordionFaq">
+                                <div class="section pt-0">
+                                    <h3 class="faqttl mb-3">Shopping Basics</h3>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">What Shipping Methods Are Available?</button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What are your shipping and return policies?</button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-5 col-md-5 col-lg-3 mb-3 mb-sm-0">
+                                                        <img class="blur-up lazyload" data-src="assets/images/collection/sub-collection5.jpg" src="assets/images/collection/sub-collection5.jpg" alt="collection" title="" width="365" height="365" />
+                                                    </div>
+                                                    <div class="col-12 col-sm-7 col-md-7 col-lg-9">
+                                                        <h3>Free shipping</h3>
+                                                        <p class="mb-2">Our mission is to create top-quality Html Template which is unique, clean, easy to use, bug less, easy to load and have all the features that merchant need to run their online eCommerce business successfully.</p>
+                                                        <p class="mb-2">Create your store with our Optimal Html Template. Our premium Html templates give your online presence the edge it needs.</p>
+                                                        <p>Optimal comes with easy-to-use interface and outstanding support. You can implement your own design. You can easily change the store's appearance as per your requirements using our ready sections and options available.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item mb-0">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do You Ship Internationally?</button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature discovered source.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section pt-0">
+                                    <h3 class="faqttl mb-3">Payments</h3>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFour">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">What Payment Methods Are Accepted?</button>
+                                        </h2>
+                                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFive">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Do you accept international credit cards?</button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>Nullam sed neque luctus, maximus diam sed, facilisis orci. Nunc ultricies neque a aliquam sollicitudin. Vivamus sit amet finibus sapien. Duis est dui, sodales nec pretium a, interdum in lacus. Sed et est vel velit vestibulum tincidunt non a felis. Phasellus convallis, diam eu facilisis tincidunt, ex nibh vulputate dolor, eu maximus massa libero vel eros. In vulputate metus lacus, eu vehicula dolor feugiat id. Nulla vitae nisl in ex consequat porttitor vel a lectus. Vestibulum viverra in velit ac consequat. Nullam porta nulla eu dignissim cursus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item mb-0">
+                                        <h2 class="accordion-header" id="headingSix">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Do you charge sales tax on any item?</button>
+                                        </h2>
+                                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionFaq">
+                                            <div class="accordion-body">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature discovered source.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="faqttl mb-3">Shipping & Returns</h3>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingSeven">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">I want to return my purchase! What do I do?</button>
+                                    </h2>
+                                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionFaq">
+                                        <div class="accordion-body">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingEight">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">How long does it take for me to get a refund?</button>
+                                    </h2>
+                                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionFaq">
+                                        <div class="accordion-body">
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingNight">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNight" aria-expanded="false" aria-controls="collapseNight">How Can I Cancel Or Change My Order?</button>
+                                    </h2>
+                                    <div id="collapseNight" class="accordion-collapse collapse" aria-labelledby="headingNight" data-bs-parent="#accordionFaq">
+                                        <div class="accordion-body">
+                                            <p>In vulputate metus lacus, eu vehicula dolor feugiat id. Nulla vitae nisl in ex consequat porttitor vel a lectus. Vestibulum viverra in velit ac consequat. Nullam porta nulla eu dignissim cursus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item mb-0">
+                                    <h2 class="accordion-header" id="headingTen">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">How can I get assistance if I need it?</button>
+                                    </h2>
+                                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionFaq">
+                                        <div class="accordion-body">
+                                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature discovered source.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Faq's Style -->
+                </div>
+                <!--End Main Content-->
+            </div>
+            <!-- End Body Container -->
+
+    {% endblock content %}

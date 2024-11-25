@@ -36,6 +36,16 @@ class ContactView(View, CustomRequestUtil):
         return self.process_request(request)
 
 
+class FAQView(View, CustomRequestUtil):
+    template_name = "faqs.html"
+    extra_context_data = {
+        "title": "FAQS",
+    }
+
+    def get(self, request, *args, **kwargs):
+        return self.process_request(request)
+
+
 class AboutView(View, CustomRequestUtil):
     template_name = "about.html"
     extra_context_data = {

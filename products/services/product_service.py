@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models import Count, Case, When, ExpressionWrapper, DecimalField, F
-
+from django.db.models import Count, Case, When, ExpressionWrapper, DecimalField, F, Q
 
 from services.util import CustomRequestUtil
 
@@ -10,8 +9,12 @@ class ProductService(CustomRequestUtil):
     def create_single(self, payload):
         pass
 
-    def fetch_list(self):
-        return self.get_base_query()
+    def fetch_list(self, filter_params=None, category=None):
+        q = Q()
+        if category:
+            q &= Q(category__iexact=category)
+
+        return self.get_base_query().filter(q)
 
 
     def get_related_products(self, product_id, limit=5):
