@@ -36,11 +36,11 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, BaseModel):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=70, null=True, blank=True)
-    image_url = models.URLField(null=True)
+    image_url = models.URLField(null=True, blank=True)
     user_type = models.CharField(
         max_length=255, default=UserTypes.customer, choices=UserTypes.choices
     )
@@ -104,25 +104,3 @@ class Role(BaseModel):
     description = models.TextField(null=True, blank=True)
     permissions = models.ManyToManyField(Permission, related_name="roles")
 
-
-class Profile(BaseModel):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
-    phone = models.CharField(max_length=20, blank=True)
-    address1 = models.CharField(max_length=200, blank=True)
-    city = models.CharField(max_length=200, blank=True)
-    state = models.CharField(max_length=200, blank=True)
-    zipcode = models.CharField(max_length=200, blank=True)
-    country = models.CharField(max_length=200, blank=True)
-    old_cart = models.CharField(max_length=200, blank=True, null=True)
-
-    def __str__(self):
-        return self.user.email
-
-
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        user_profile = Profile(user=instance)
-        user_profile.save()
-
-
-post_save.connect(create_profile, sender=User)

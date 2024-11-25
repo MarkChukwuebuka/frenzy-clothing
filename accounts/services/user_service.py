@@ -19,8 +19,9 @@ class UserService(CustomRequestUtil):
 
         email = payload.get("email")
         password = payload.get("password")
-        first_name = payload.get("first_name")
-        last_name = payload.get("last_name")
+        password2 = payload.get("password2")
+        first_name = payload.get("first_name", None)
+        last_name = payload.get("last_name", None)
 
         try:
             email_info = validate_email(email, check_deliverability=True)
@@ -31,6 +32,9 @@ class UserService(CustomRequestUtil):
         existing_user, _ = self.find_user_by_email(email)
         if existing_user:
             return None, self.make_error("User with email already exist")
+
+        if password != password2:
+            return None, self.make_error("Password mismatch")
 
         user, is_created = User.objects.get_or_create(
             email=email,

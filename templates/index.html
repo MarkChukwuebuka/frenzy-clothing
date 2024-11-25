@@ -1,4 +1,6 @@
 {% extends 'partials/base.html' %}
+{% load static %}
+{% load humanize %}
 
     {% block content %}
 
@@ -13,8 +15,8 @@
                         <div class="slide">
                             <div class="slideshow-wrap">
                                 <picture>
-                                    <source media="(max-width:767px)" srcset="assets/images/slideshow/demo1-banner1-mbl.jpg" width="1150" height="800">
-                                    <img class="blur-up lazyload" src="assets/images/slideshow/demo1-banner1.jpg" alt="slideshow" title="" width="1920" height="795" />
+                                    <source media="(max-width:767px)" srcset="{% static 'assets/images/slideshow/demo1-banner1-mbl.jpg' %}" width="1150" height="800">
+                                    <img class="blur-up lazyload" src="{% static 'assets/images/slideshow/demo1-banner1.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
                                 </picture> 
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-left">
@@ -36,8 +38,8 @@
                         <div class="slide">
                             <div class="slideshow-wrap">
                                 <picture>
-                                    <source media="(max-width:767px)" srcset="assets/images/slideshow/demo1-banner2-mbl.jpg" width="1150" height="800">
-                                    <img class="blur-up lazyload" src="assets/images/slideshow/demo1-banner2.jpg" alt="slideshow" title="" width="1920" height="795" />
+                                    <source media="(max-width:767px)" srcset="{% static 'assets/images/slideshow/demo1-banner2-mbl.jpg' %}" width="1150" height="800">
+                                    <img class="blur-up lazyload" src="{% static 'assets/images/slideshow/demo1-banner2.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
                                 </picture>  
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-right">
@@ -57,8 +59,8 @@
                         <div class="slide">
                             <div class="slideshow-wrap">
                                 <picture>
-                                    <source media="(max-width:767px)" srcset="assets/images/slideshow/demo1-banner3-mbl.jpg" width="1150" height="800">
-                                    <img class="blur-up lazyload" src="assets/images/slideshow/demo1-banner3.jpg" alt="slideshow" title="" width="1920" height="795" />
+                                    <source media="(max-width:767px)" srcset="{% static 'assets/images/slideshow/demo1-banner3-mbl.jpg' %}" width="1150" height="800">
+                                    <img class="blur-up lazyload" src="{% static 'assets/images/slideshow/demo1-banner3.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
                                 </picture>  
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-right">
@@ -133,7 +135,7 @@
                                     <div class="collection-item sp-col">
                                         <a href="shop-left-sidebar.html" class="zoom-scal">
                                             <div class="img">
-                                                <img class="blur-up lazyload" data-src="assets/images/collection/demo1-ct-img1.jpg" src="assets/images/collection/demo1-ct-img1.jpg" alt="Women Wear" title="Women Wear" width="645" height="723" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/collection/demo1-ct-img1.jpg' %}" src="{% static 'assets/images/collection/demo1-ct-img1.jpg' %}" alt="Women Wear" title="Women Wear" width="645" height="723" />
                                             </div>
                                             <div class="details middle-right">
                                                 <div class="inner">
@@ -149,7 +151,7 @@
                                     <div class="collection-item sp-col">
                                         <a href="shop-left-sidebar.html" class="zoom-scal">
                                             <div class="img">
-                                                <img class="blur-up lazyload" data-src="assets/images/collection/demo1-ct-img2.jpg" src="assets/images/collection/demo1-ct-img2.jpg" alt="Mens Wear" title="Mens Wear" width="645" height="344" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/collection/demo1-ct-img2.jpg' %}" src="{% static 'assets/images/collection/demo1-ct-img2.jpg' %}" alt="Mens Wear" title="Mens Wear" width="645" height="344" />
                                             </div>
                                             <div class="details middle-left">
                                                 <div class="inner">
@@ -163,7 +165,7 @@
                                     <div class="collection-item sp-col">
                                         <a href="shop-left-sidebar.html" class="zoom-scal">
                                             <div class="img">
-                                                <img class="blur-up lazyload" data-src="assets/images/collection/demo1-ct-img3.jpg" src="assets/images/collection/demo1-ct-img3.jpg" alt="Kids Wear" title="Kids Wear" width="645" height="349" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/collection/demo1-ct-img3.jpg' %}" src="{% static 'assets/images/collection/demo1-ct-img3.jpg' %}" alt="Kids Wear" title="Kids Wear" width="645" height="349" />
                                             </div>
                                             <div class="details middle-right">
                                                 <div class="inner">
@@ -192,7 +194,7 @@
                         <div class="collection-slider-5items gp15 arwOut5 hov-arrow">
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection1.jpg" src="assets/images/collection/sub-collection1.jpg" alt="Men's Jakets" title="Men's Jakets" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection1.jpg' %}" src="{% static 'assets/images/collection/sub-collection1.jpg' %}" alt="Men's Jakets" title="Men's Jakets" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Men's Jakets</h4>
                                         <p class="counts">20 Products</p>
@@ -201,7 +203,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection3.jpg" src="assets/images/collection/sub-collection3.jpg" alt="Tops" title="Tops" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection3.jpg' %}" src="{% static 'assets/images/collection/sub-collection3.jpg' %}" alt="Tops" title="Tops" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Tops</h4>
                                         <p class="counts">13 Products</p>
@@ -210,7 +212,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection5.jpg" src="assets/images/collection/sub-collection5.jpg" alt="T-Shirts" title="T-Shirts" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection5.jpg' %}" src="{% static 'assets/images/collection/sub-collection5.jpg' %}" alt="T-Shirts" title="T-Shirts" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">T-Shirts</h4>
                                         <p class="counts">18 Products</p>
@@ -219,7 +221,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection6.jpg" src="assets/images/collection/sub-collection6.jpg" alt="Shoes" title="Shoes" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection6.jpg' %}" src="{% static 'assets/images/collection/sub-collection6.jpg' %}" alt="Shoes" title="Shoes" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Shoes</h4>
                                         <p class="counts">11 Products</p>
@@ -228,7 +230,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection9.jpg" src="assets/images/collection/sub-collection9.jpg" alt="Shorts" title="Shorts" width="365" height="365"/></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection9.jpg' %}" src="{% static 'assets/images/collection/sub-collection9.jpg' %}" alt="Shorts" title="Shorts" width="365" height="365"/></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Shorts</h4>
                                         <p class="counts">28 Products</p>
@@ -237,7 +239,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection2.jpg" src="assets/images/collection/sub-collection2.jpg" alt="Sunglasses" title="Sunglasses" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection2.jpg' %}" src="{% static 'assets/images/collection/sub-collection2.jpg' %}" alt="Sunglasses" title="Sunglasses" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Sunglasses</h4>
                                         <p class="counts">24 Products</p>
@@ -246,7 +248,7 @@
                             </div>
                             <div class="category-item zoomscal-hov">
                                 <a href="shop-left-sidebar.html" class="category-link clr-none">
-                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="assets/images/collection/sub-collection4.jpg" src="assets/images/collection/sub-collection4.jpg" alt="Girls Top" title="Girls Top" width="365" height="365" /></div>
+                                    <div class="zoom-scal zoom-scal-nopb rounded-3"><img class="blur-up lazyload" data-src="{% static 'assets/images/collection/sub-collection4.jpg' %}" src="{% static 'assets/images/collection/sub-collection4.jpg' %}" alt="Girls Top" title="Girls Top" width="365" height="365" /></div>
                                     <div class="details mt-3 text-center">
                                         <h4 class="category-title mb-0">Girls Top</h4>
                                         <p class="counts">26 Products</p>
@@ -289,7 +291,7 @@
                                                     <!-- Start Product Image -->
                                                     <div class="product-image">
                                                         <!-- Start Product Image -->
-                                                        <a href="product-layout1.html" class="product-img rounded-3"><img class="blur-up lazyload" src="assets/images/products/product1.jpg" alt="Product" title="Product" width="625" height="808" /></a>
+                                                        <a href="product-layout1.html" class="product-img rounded-3"><img class="blur-up lazyload" src="{% static 'assets/images/products/product1.jpg' %}" alt="Product" title="Product" width="625" height="808" /></a>
                                                         <!-- End Product Image -->
                                                         <!-- Product label -->
                                                         <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -339,10 +341,10 @@
                                                         <!-- End Product Review -->
                                                         <!--Color Variant -->
                                                         <ul class="variants-clr swatches">
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Navy"><img src="assets/images/products/product1.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"><img src="assets/images/products/product1-1.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray"><img src="assets/images/products/product1-2.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange"><img src="assets/images/products/product1-3.jpg" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Navy"><img src="{% static 'assets/images/products/product1.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"><img src="{% static 'assets/images/products/product1-1.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray"><img src="{% static 'assets/images/products/product1-2.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange"><img src="{% static 'assets/images/products/product1-3.jpg' %}" alt="product" width="625" height="808" /></span></li>
                                                         </ul>
                                                         <!-- End Variant -->
                                                     </div>
@@ -356,7 +358,7 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="blur-up lazyload" data-src="assets/images/products/product2.jpg" src="assets/images/products/product2.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2.jpg' %}" src="{% static 'assets/images/products/product2.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -402,12 +404,12 @@
                                                         <!-- End Product Review -->
                                                         <!--Color Variant -->
                                                         <ul class="variants-clr swatches">
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Navy"><img src="assets/images/products/product2.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"><img src="assets/images/products/product2-1.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray"><img src="assets/images/products/product2-2.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange"><img src="assets/images/products/product2-3.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"><img src="assets/images/products/product2-4.jpg" alt="product" width="625" height="808" /></span></li>
-                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue"><img src="assets/images/products/product2-5.jpg" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Navy"><img src="{% static 'assets/images/products/product2.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"><img src="{% static 'assets/images/products/product2-1.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray"><img src="{% static 'assets/images/products/product2-2.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange"><img src="{% static 'assets/images/products/product2-3.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"><img src="{% static 'assets/images/products/product2-4.jpg' %}" alt="product" width="625" height="808" /></span></li>
+                                                            <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue"><img src="{% static 'assets/images/products/product2-5.jpg' %}" alt="product" width="625" height="808" /></span></li>
                                                         </ul>
                                                         <!-- End Variant -->
                                                     </div>
@@ -421,10 +423,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product3.jpg" src="assets/images/products/product3.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product3.jpg' %}" src="{% static 'assets/images/products/product3.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product3-1.jpg" src="assets/images/products/product3-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product3-1.jpg' %}" src="{% static 'assets/images/products/product3-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -489,10 +491,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product4.jpg" src="assets/images/products/product4.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product4.jpg' %}" src="{% static 'assets/images/products/product4.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product4-1.jpg" src="assets/images/products/product4-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product4-1.jpg' %}" src="{% static 'assets/images/products/product4-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -550,9 +552,9 @@
                                                         <!-- End Product Review -->
                                                         <!-- Variant -->
                                                         <ul class="variants-clr swatches">
-                                                            <li class="swatch medium radius black"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
-                                                            <li class="swatch medium radius navy"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="navy" /></li>
-                                                            <li class="swatch medium radius darkgreen"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="darkgreen" /></li>
+                                                            <li class="swatch medium radius black"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
+                                                            <li class="swatch medium radius navy"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="navy" /></li>
+                                                            <li class="swatch medium radius darkgreen"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="darkgreen" /></li>
                                                         </ul>
                                                         <!-- End Variant -->
                                                     </div>
@@ -566,10 +568,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product5.jpg" src="assets/images/products/product5.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product5.jpg' %}" src="{% static 'assets/images/products/product5.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product5-1.jpg" src="assets/images/products/product5-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product5-1.jpg' %}" src="{% static 'assets/images/products/product5-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -633,10 +635,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product6.jpg" src="assets/images/products/product6.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product6.jpg' %}" src="{% static 'assets/images/products/product6.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product6-1.jpg" src="assets/images/products/product6-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product6-1.jpg' %}" src="{% static 'assets/images/products/product6-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -702,10 +704,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product7.jpg" src="assets/images/products/product7.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product7.jpg' %}" src="{% static 'assets/images/products/product7.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product7-1.jpg" src="assets/images/products/product7-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product7-1.jpg' %}" src="{% static 'assets/images/products/product7-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -754,8 +756,8 @@
                                                         <!-- End Product Review -->
                                                         <!-- Variant -->
                                                         <ul class="variants-clr swatches">
-                                                            <li class="swatch medium radius black"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
-                                                            <li class="swatch medium radius maroon"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="maroon" /></li>
+                                                            <li class="swatch medium radius black"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
+                                                            <li class="swatch medium radius maroon"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="maroon" /></li>
                                                         </ul>
                                                         <!-- End Variant -->
                                                     </div>
@@ -769,10 +771,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product8.jpg" src="assets/images/products/product8.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product8.jpg' %}" src="{% static 'assets/images/products/product8.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product8-1.jpg" src="assets/images/products/product8-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product8-1.jpg' %}" src="{% static 'assets/images/products/product8-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -847,10 +849,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product8.jpg" src="assets/images/products/product8.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product8.jpg' %}" src="{% static 'assets/images/products/product8.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product8-1.jpg" src="assets/images/products/product8-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product8-1.jpg' %}" src="{% static 'assets/images/products/product8-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -912,10 +914,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product9.jpg" src="assets/images/products/product9.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product9.jpg' %}" src="{% static 'assets/images/products/product9.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product9-1.jpg" src="assets/images/products/product9-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product9-1.jpg' %}" src="{% static 'assets/images/products/product9-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -973,10 +975,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product10.jpg" src="assets/images/products/product10.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product10.jpg' %}" src="{% static 'assets/images/products/product10.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product10-1.jpg" src="assets/images/products/product10-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product10-1.jpg' %}" src="{% static 'assets/images/products/product10-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1031,10 +1033,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product11.jpg" src="assets/images/products/product11.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product11.jpg' %}" src="{% static 'assets/images/products/product11.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product11-1.jpg" src="assets/images/products/product11-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product11-1.jpg' %}" src="{% static 'assets/images/products/product11-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1089,10 +1091,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product12.jpg" src="assets/images/products/product12.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product12.jpg' %}" src="{% static 'assets/images/products/product12.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product12-1.jpg" src="assets/images/products/product12-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product12-1.jpg' %}" src="{% static 'assets/images/products/product12-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1147,10 +1149,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product13.jpg" src="assets/images/products/product13.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product13.jpg' %}" src="{% static 'assets/images/products/product13.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product13-1.jpg" src="assets/images/products/product13-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product13-1.jpg' %}" src="{% static 'assets/images/products/product13-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1205,10 +1207,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product14.jpg" src="assets/images/products/product14.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product14.jpg' %}" src="{% static 'assets/images/products/product14.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product14-1.jpg" src="assets/images/products/product14-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product14-1.jpg' %}" src="{% static 'assets/images/products/product14-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1263,10 +1265,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product15.jpg" src="assets/images/products/product15.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product15.jpg' %}" src="{% static 'assets/images/products/product15.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product15-1.jpg" src="assets/images/products/product15-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product15-1.jpg' %}" src="{% static 'assets/images/products/product15-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1334,10 +1336,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product5.jpg" src="assets/images/products/product5.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product5.jpg' %}" src="{% static 'assets/images/products/product5.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product5-1.jpg" src="assets/images/products/product5-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product5-1.jpg' %}" src="{% static 'assets/images/products/product5-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1401,10 +1403,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product6.jpg" src="assets/images/products/product6.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product6.jpg' %}" src="{% static 'assets/images/products/product6.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product6-1.jpg" src="assets/images/products/product6-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product6-1.jpg' %}" src="{% static 'assets/images/products/product6-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1470,10 +1472,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product7.jpg" src="assets/images/products/product7.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product7.jpg' %}" src="{% static 'assets/images/products/product7.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product7-1.jpg" src="assets/images/products/product7-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product7-1.jpg' %}" src="{% static 'assets/images/products/product7-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1522,8 +1524,8 @@
                                                         <!-- End Product Review -->
                                                         <!-- Variant -->
                                                         <ul class="variants-clr swatches">
-                                                            <li class="swatch medium radius black"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
-                                                            <li class="swatch medium radius maroon"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="maroon" /></li>
+                                                            <li class="swatch medium radius black"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="black" /></li>
+                                                            <li class="swatch medium radius maroon"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="maroon" /></li>
                                                         </ul>
                                                         <!-- End Variant -->
                                                     </div>
@@ -1537,10 +1539,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product8.jpg" src="assets/images/products/product8.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product8.jpg' %}" src="{% static 'assets/images/products/product8.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product8-1.jpg" src="assets/images/products/product8-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product8-1.jpg' %}" src="{% static 'assets/images/products/product8-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1602,10 +1604,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product9.jpg" src="assets/images/products/product9.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product9.jpg' %}" src="{% static 'assets/images/products/product9.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product9-1.jpg" src="assets/images/products/product9-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product9-1.jpg' %}" src="{% static 'assets/images/products/product9-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1663,10 +1665,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product10.jpg" src="assets/images/products/product10.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product10.jpg' %}" src="{% static 'assets/images/products/product10.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product10-1.jpg" src="assets/images/products/product10-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product10-1.jpg' %}" src="{% static 'assets/images/products/product10-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1721,10 +1723,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product11.jpg" src="assets/images/products/product11.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product11.jpg' %}" src="{% static 'assets/images/products/product11.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product11-1.jpg" src="assets/images/products/product11-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product11-1.jpg' %}" src="{% static 'assets/images/products/product11-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1779,10 +1781,10 @@
                                                         <!-- Start Product Image -->
                                                         <a href="product-layout1.html" class="product-img rounded-3">
                                                             <!-- Image -->
-                                                            <img class="primary blur-up lazyload" data-src="assets/images/products/product12.jpg" src="assets/images/products/product12.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="primary blur-up lazyload" data-src="{% static 'assets/images/products/product12.jpg' %}" src="{% static 'assets/images/products/product12.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Image -->
                                                             <!-- Hover Image -->
-                                                            <img class="hover blur-up lazyload" data-src="assets/images/products/product12-1.jpg" src="assets/images/products/product12-1.jpg" alt="Product" title="Product" width="625" height="808" />
+                                                            <img class="hover blur-up lazyload" data-src="{% static 'assets/images/products/product12-1.jpg' %}" src="{% static 'assets/images/products/product12-1.jpg' %}" alt="Product" title="Product" width="625" height="808" />
                                                             <!-- End Hover Image -->
                                                         </a>
                                                         <!-- End Product Image -->
@@ -1847,7 +1849,7 @@
                 <!--Parallax Banner-->
                 <div class="section parallax-banner-style1 py-0">
                     <div class="hero hero-large hero-overlay bg-size">
-                        <img class="bg-img" src="assets/images/parallax/demo1-sale-banner.jpg" alt="Clearance Sale - Flat 50% Off" width="1920" height="645" />
+                        <img class="bg-img" src="{% static 'assets/images/parallax/demo1-sale-banner.jpg' %}" alt="Clearance Sale - Flat 50% Off" width="1920" height="645" />
                         <div class="hero-inner d-flex-justify-center">
                             <div class="container">
                                 <div class="wrap-text center text-white">
@@ -1878,7 +1880,7 @@
                             <div class="testimonial-slider-3items gp15 slick-arrow-dots arwOut5">
                                 <div class="testimonial-slide">
                                     <div class="testimonial-content text-center">     
-                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="assets/images/icons/demo1-quote-icon.png" src="assets/images/icons/demo1-quote-icon.png" alt="icon" width="40" height="40" /></div>
+                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" alt="icon" width="40" height="40" /></div>
                                         <div class="content">  
                                             <div class="text mb-2"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 1500s.</p></div>
                                             <div class="product-review my-3">
@@ -1886,10 +1888,10 @@
                                                 <span class="caption hidden ms-1">24 Reviews</span>
                                             </div>
                                         </div>
-                                        <div class="auhimg d-flex-justify-center text-left">
-                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="assets/images/users/testimonial1-65x.jpg" src="assets/images/users/testimonial1-65x.jpg" alt="John Doe" width="65" height="65" /></div>
-                                            <div class="auhtext ms-3">
-                                                <h5 class="authour mb-1">John Doe</h5>
+                                        <div class="{% static 'auhimg d-flex-justify-center text-left">
+                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="{% static 'assets/images/users/testimonial1-65x.jpg' %}" src="{% static 'assets/images/users/testimonial1-65x.jpg' %}" alt="John Doe" width="65" height="65" /></div>
+                                            <div class="{% static 'auhtext ms-3">
+                                                <h5 class="{% static 'authour mb-1">John Doe</h5>
                                                 <p class="text-muted">Founder &amp; CEO</p>
                                             </div>
                                         </div>
@@ -1897,7 +1899,7 @@
                                 </div>
                                 <div class="testimonial-slide">
                                     <div class="testimonial-content text-center">                                                     
-                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="assets/images/icons/demo1-quote-icon.png" src="assets/images/icons/demo1-quote-icon.png" alt="icon" width="40" height="40" /></div>
+                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" alt="icon" width="40" height="40" /></div>
                                         <div class="content">  
                                             <div class="text mb-2"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 1500s.</p></div>
                                             <div class="product-review my-3">
@@ -1905,10 +1907,10 @@
                                                 <span class="caption hidden ms-1">15 Reviews</span>
                                             </div>
                                         </div>
-                                        <div class="auhimg d-flex-justify-center text-left">
-                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="assets/images/users/testimonial2-65x.jpg" src="assets/images/users/testimonial2-65x.jpg" alt="Jessica Doe" width="65" height="65" /></div>
-                                            <div class="auhtext ms-3">
-                                                <h5 class="authour mb-1">Jessica Doe</h5>
+                                        <div class="{% static 'auhimg d-flex-justify-center text-left">
+                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="{% static 'assets/images/users/testimonial2-65x.jpg' %}" src="{% static 'assets/images/users/testimonial2-65x.jpg' %}" alt="Jessica Doe" width="65" height="65" /></div>
+                                            <div class="{% static 'auhtext ms-3">
+                                                <h5 class="{% static 'authour mb-1">Jessica Doe</h5>
                                                 <p class="text-muted">Marketing</p>
                                             </div>
                                         </div>
@@ -1916,7 +1918,7 @@
                                 </div>
                                 <div class="testimonial-slide">
                                     <div class="testimonial-content text-center">                                                     
-                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="assets/images/icons/demo1-quote-icon.png" src="assets/images/icons/demo1-quote-icon.png" alt="icon" width="40" height="40" /></div>
+                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" alt="icon" width="40" height="40" /></div>
                                         <div class="content">  
                                             <div class="text mb-2"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 1500s.</p></div>
                                             <div class="product-review my-3">
@@ -1924,10 +1926,10 @@
                                                 <span class="caption hidden ms-1">17 Reviews</span>
                                             </div>
                                         </div>
-                                        <div class="auhimg d-flex-justify-center text-left">
-                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="assets/images/users/testimonial3-65x.jpg" src="assets/images/users/testimonial3-65x.jpg" alt="Rick Edward" width="65" height="65" /></div>
-                                            <div class="auhtext ms-3">
-                                                <h5 class="authour mb-1">Rick Edward</h5>
+                                        <div class="{% static 'auhimg d-flex-justify-center text-left">
+                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="{% static 'assets/images/users/testimonial3-65x.jpg' %}" src="{% static 'assets/images/users/testimonial3-65x.jpg' %}" alt="Rick Edward" width="65" height="65" /></div>
+                                            <div class="{% static 'auhtext ms-3">
+                                                <h5 class="{% static 'authour mb-1">Rick Edward</h5>
                                                 <p class="text-muted">Developer</p>
                                             </div>
                                         </div>
@@ -1935,7 +1937,7 @@
                                 </div>
                                 <div class="testimonial-slide rounded-3">
                                     <div class="testimonial-content text-center">                                                     
-                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="assets/images/icons/demo1-quote-icon.png" src="assets/images/icons/demo1-quote-icon.png" alt="icon" width="40" height="40"/></div>
+                                        <div class="quote-icon mb-3 mb-lg-4"><img class="blur-up lazyload mx-auto" data-src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" src="{% static 'assets/images/icons/demo1-quote-icon.png' %}" alt="icon" width="40" height="40"/></div>
                                         <div class="content">  
                                             <div class="text mb-2"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 1500s.</p></div>
                                             <div class="product-review my-3">
@@ -1943,10 +1945,10 @@
                                                 <span class="caption hidden ms-1">29 Reviews</span>
                                             </div>
                                         </div>
-                                        <div class="auhimg d-flex-justify-center text-left">
-                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="assets/images/users/testimonial4-65x.jpg" src="assets/images/users/testimonial4-65x.jpg" alt="Happy Buyer" width="65" height="65"/></div>
-                                            <div class="auhtext ms-3">
-                                                <h5 class="authour mb-1">Happy Buyer</h5>
+                                        <div class="{% static 'auhimg d-flex-justify-center text-left">
+                                            <div class="image"><img class="rounded-circle blur-up lazyload" data-src="{% static 'assets/images/users/testimonial4-65x.jpg' %}" src="{% static 'assets/images/users/testimonial4-65x.jpg' %}" alt="Happy Buyer" width="65" height="65"/></div>
+                                            <div class="{% static 'auhtext ms-3">
+                                                <h5 class="{% static 'authour mb-1">Happy Buyer</h5>
                                                 <p class="text-muted">Designer</p>
                                             </div>
                                         </div>
@@ -1958,59 +1960,6 @@
                     </div>
                 </section>
                 <!--End Testimonial section-->
-
-                <!--Blog Post-->
-                <section class="section home-blog-post">
-                    <div class="container">
-                        <div class="section-header">
-                            <p class="mb-2 mt-0">Latest post</p>
-                            <h2>Most Recent News</h2>
-                        </div>
-
-                        <div class="blog-slider-3items gp15 arwOut5 hov-arrow">
-                            <div class="blog-item">
-                                <div class="blog-article zoomscal-hov">
-                                    <div class="blog-img">
-                                        <a class="featured-image zoom-scal" href="blog-details.html"><img class="blur-up lazyload" data-src="assets/images/blog/post-img1.jpg" src="assets/images/blog/post-img1.jpg" alt="New shop collection our shop" width="740" height="410" /></a>
-                                        <div class="date"><span class="dt">25</span> <span class="mt">Apr<br> <b>2023</b></span></div>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h2 class="h3 mb-3"><a href="blog-details.html">New shop collection our shop</a></h2>
-                                        <p class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
-                                        <a href="blog-details.html" class="btn btn-secondary btn-sm">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blog-item">
-                                <div class="blog-article zoomscal-hov">
-                                    <div class="blog-img">
-                                        <a class="featured-image zoom-scal" href="blog-details.html"><img class="blur-up lazyload" data-src="assets/images/blog/post-img2.jpg" src="assets/images/blog/post-img2.jpg" alt="Gift ideas for everyone" width="740" height="410" /></a>
-                                        <div class="date"><span class="dt">31</span> <span class="mt">Mar<br> <b>2023</b></span></div>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h2 class="h3 mb-3"><a href="blog-details.html">Gift ideas for everyone</a></h2>
-                                        <p class="content">There are many variations of passages of Lorem Ipsum available, but the majority suffered.</p>
-                                        <a href="blog-details.html" class="btn btn-secondary btn-sm">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blog-item">
-                                <div class="blog-article zoomscal-hov">
-                                    <div class="blog-img">
-                                        <a class="featured-image zoom-scal" href="blog-details.html"><img class="blur-up lazyload" data-src="assets/images/blog/post-img3.jpg" src="assets/images/blog/post-img3.jpg" alt="Sales with best collection" width="740" height="410" /></a>
-                                        <div class="date"><span class="dt">30</span> <span class="mt">Jan<br> <b>2023</b></span></div>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h2 class="h3 mb-3"><a href="blog-details.html">Sales with best collection</a></h2>
-                                        <p class="content">There are many variations of passages of Lorem Ipsum available, but the majority.</p>
-                                        <a href="blog-details.html" class="btn btn-secondary btn-sm">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--End Blog Post-->
             </div>
             <!-- End Body Container -->
 
@@ -2041,8 +1990,8 @@
                                 <h4 class="h4">Informations</h4>
                                 <ul>
                                     <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="aboutus-style1.html">About us</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="{% static 'aboutus-style1.html">About us</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
                                     <li><a href="privacy-policy.html">Privacy policy</a></li>
                                     <li><a href="#">Terms &amp; condition</a></li>
                                 </ul>
@@ -2069,7 +2018,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-contact">
                                 <h4 class="h4">Contact Us</h4>
-                                <p class="address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> 55 Gallaxy Enque, 2568 steet, 23568 NY</p>
+                                <p class="{% static 'address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> 55 Gallaxy Enque, 2568 steet, 23568 NY</p>
                                 <p class="phone d-flex align-items-center"><i class="icon anm anm-phone-l"></i>  <b class="me-1 d-none">Phone:</b> <a href="tel:401234567890">(+40) 123 456 7890</a></p>
                                 <p class="email d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> <b class="me-1 d-none">Email:</b> <a href="mailto:info@example.com">info@example.com</a></p>
                                 <ul class="list-inline social-icons mt-3">
@@ -2112,7 +2061,7 @@
                     <a href="my-account.html"><i class="menubar-icon icon anm anm-user-al"></i><span class="menubar-label">Account</span></a>
                 </div>
                 <div class="menubar-search menubar-item">
-                    <a href="index.html"><span class="menubar-icon anm anm-home-l"></span><span class="menubar-label">Home</span></a>
+                    <a href="{% url 'home' %}"><span class="menubar-icon anm anm-home-l"></span><span class="menubar-label">Home</span></a>
                 </div>
                 <div class="menubar-wish menubar-item">
                     <a href="wishlist-style1.html">
@@ -2144,7 +2093,7 @@
                     <div class="cartEmpty-content mt-4">
                         <i class="icon anm anm-cart-l fs-1 text-muted"></i> 
                         <p class="my-3">No Products in the Cart</p>
-                        <a href="index.html" class="btn btn-primary cart-btn">Continue shopping</a>
+                        <a href="{% url 'home' %}" class="btn btn-primary cart-btn">Continue shopping</a>
                     </div>
                 </div>
                 <!--End MiniCart Empty-->
@@ -2159,7 +2108,7 @@
                         <ul class="m-0 clearfix">
                             <li class="item d-flex justify-content-center align-items-center">
                                 <a class="product-image rounded-3" href="product-layout1.html">
-                                    <img class="blur-up lazyload" data-src="assets/images/products/cart-product-img1.jpg" src="assets/images/products/cart-product-img1.jpg" alt="product" title="Product" width="120" height="170" />
+                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/cart-product-img1.jpg' %}" src="{% static 'assets/images/products/cart-product-img1.jpg' %}" alt="product" title="Product" width="120" height="170" />
                                 </a>
                                 <div class="product-details">
                                     <a class="product-title" href="product-layout1.html">Women Sandals</a>
@@ -2182,7 +2131,7 @@
                             </li>
                             <li class="item d-flex justify-content-center align-items-center">
                                 <a class="product-image rounded-3" href="product-layout1.html">
-                                    <img class="blur-up lazyload" data-src="assets/images/products/cart-product-img2.jpg" src="assets/images/products/cart-product-img2.jpg" alt="product" title="Product" width="120" height="170" />
+                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/cart-product-img2.jpg' %}" src="{% static 'assets/images/products/cart-product-img2.jpg' %}" alt="product" title="Product" width="120" height="170" />
                                 </a>
                                 <div class="product-details">
                                     <a class="product-title" href="product-layout1.html">Sleeve Round T-Shirt</a>
@@ -2217,7 +2166,7 @@
                             <div class="totalInfo clearfix"><span>Total:</span><span class="item product-price">$163.00</span></div>
 
                         </div>
-                        <div class="agree-check customCheckbox">
+                        <div class="{% static 'agree-check customCheckbox">
                             <input id="prTearm" name="tearm" type="checkbox" value="tearm" required />
                             <label for="prTearm"> I agree with the </label><a href="#" class="ms-1 text-link">Terms &amp; conditions</a>
                         </div>
@@ -2240,7 +2189,7 @@
                             <form method="post" action="#" id="product-form-quickshop" class="product-form align-items-center">
                                 <!-- Product Info -->
                                 <div class="row g-0 item mb-3">
-                                    <a class="col-4 product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="assets/images/products/addtocart-modal.jpg" src="assets/images/products/addtocart-modal.jpg" alt="Product" title="Product" width="625" height="800" /></a>
+                                    <a class="col-4 product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="{% static 'assets/images/products/addtocart-modal.jpg' %}" src="{% static 'assets/images/products/addtocart-modal.jpg' %}" alt="Product" title="Product" width="625" height="800" /></a>
                                     <div class="col-8 product-details">
                                         <div class="product-variant ps-3">
 
@@ -2261,9 +2210,9 @@
                                 <div class="variants-clr swatches-image clearfix mb-3 swatch-0 option1" data-option-index="0">
                                     <label class="label d-flex justify-content-center">Color:<span class="slVariant ms-1 fw-bold">Black</span></label>
                                     <ul class="swatches d-flex-justify-center pt-1 clearfix">
-                                        <li class="swatch large radius available active"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue" /></li>
-                                        <li class="swatch large radius available"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Black" /></li>
-                                        <li class="swatch large radius available"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Pink" /></li>
+                                        <li class="swatch large radius available active"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue" /></li>
+                                        <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Black" /></li>
+                                        <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Pink" /></li>
                                         <li class="swatch large radius available green"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"></span></li>
                                         <li class="swatch large radius soldout yellow"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"></span></li>
                                     </ul>
@@ -2283,7 +2232,7 @@
                                 <!-- End Swatches Size -->
                                 <!-- Product Action -->
                                 <div class="product-form-submit d-flex-justify-center">
-                                    <button type="submit" name="add" class="btn product-cart-submit me-2"><span>Add to cart</span></button>
+                                    <button type="submit" name="{% static 'add" class="btn product-cart-submit me-2"><span>Add to cart</span></button>
                                     <button type="submit" name="sold" class="btn btn-secondary product-sold-out d-none" disabled="disabled">Sold out</button>
                                     <button type="submit" name="buy" class="btn btn-secondary proceed-to-checkout">Buy it now</button>
                                 </div>
@@ -2297,7 +2246,7 @@
             <!-- End Product Quickshop Modal -->
 
             <!-- Product Addtocart Modal-->
-            <div class="addtocart-modal modal fade" id="addtocart_modal" tabindex="-1" aria-hidden="true">           
+            <div class="{% static 'addtocart-modal modal fade" id="{% static 'addtocart_modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -2307,7 +2256,7 @@
                                 <div class="row d-flex-center text-center">
                                     <div class="col-md-6">
                                         <!-- Product Image -->
-                                        <a class="product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="assets/images/products/addtocart-modal.jpg" src="assets/images/products/addtocart-modal.jpg" alt="Product" title="Product" width="625" height="800" /></a>
+                                        <a class="product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="{% static 'assets/images/products/addtocart-modal.jpg' %}" src="{% static 'assets/images/products/addtocart-modal.jpg' %}" alt="Product" title="Product" width="625" height="800" /></a>
                                         <!-- End Product Image -->
                                     </div>
                                     <div class="col-md-6 mt-3 mt-md-0">
@@ -2317,7 +2266,7 @@
                                             <a class="product-title" href="product-layout1.html">Cuff Beanie Cap</a>
                                             <p class="product-clr my-2 text-muted">Black / XL</p>
                                         </div>
-                                        <div class="addcart-total rounded-5">
+                                        <div class="{% static 'addcart-total rounded-5">
                                             <p class="product-items mb-2">There are <strong>1</strong> items in your cart</p>
                                             <p class="d-flex-justify-center">Total: <span class="price">$198.00</span></p>
                                         </div>
@@ -2351,22 +2300,22 @@
                                         <!-- Image Slide carousel items -->
                                         <div class="carousel-inner">
                                             <div class="item carousel-item active" data-bs-slide-number="0">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2.jpg" src="assets/images/products/product2.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2.jpg' %}" src="{% static 'assets/images/products/product2.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                             <div class="item carousel-item" data-bs-slide-number="1">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2-1.jpg" src="assets/images/products/product2-1.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-1.jpg' %}" src="{% static 'assets/images/products/product2-1.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                             <div class="item carousel-item" data-bs-slide-number="2">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2-2.jpg" src="assets/images/products/product2-2.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-2.jpg' %}" src="{% static 'assets/images/products/product2-2.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                             <div class="item carousel-item" data-bs-slide-number="3">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2-3.jpg" src="assets/images/products/product2-3.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-3.jpg' %}" src="{% static 'assets/images/products/product2-3.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                             <div class="item carousel-item" data-bs-slide-number="4">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2-4.jpg" src="assets/images/products/product2-4.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-4.jpg' %}" src="{% static 'assets/images/products/product2-4.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                             <div class="item carousel-item" data-bs-slide-number="5">
-                                                <img class="blur-up lazyload" data-src="assets/images/products/product2-5.jpg" src="assets/images/products/product2-5.jpg" alt="product" title="Product" width="625" height="808" />
+                                                <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-5.jpg' %}" src="{% static 'assets/images/products/product2-5.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                             </div>
                                         </div>
                                         <!-- End Image Slide carousel items -->
@@ -2375,22 +2324,22 @@
                                             <!-- Thumbnail slide -->
                                             <div class="carousel-indicators list-inline">
                                                 <div class="list-inline-item active" id="carousel-selector-0" data-bs-slide-to="0" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2.jpg" src="assets/images/products/product2.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2.jpg' %}" src="{% static 'assets/images/products/product2.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                                 <div class="list-inline-item" id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2-1.jpg" src="assets/images/products/product2-1.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-1.jpg' %}" src="{% static 'assets/images/products/product2-1.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                                 <div class="list-inline-item" id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2-2.jpg" src="assets/images/products/product2-2.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-2.jpg' %}" src="{% static 'assets/images/products/product2-2.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                                 <div class="list-inline-item" id="carousel-selector-3" data-bs-slide-to="3" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2-3.jpg" src="assets/images/products/product2-3.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-3.jpg' %}" src="{% static 'assets/images/products/product2-3.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                                 <div class="list-inline-item" id="carousel-selector-4" data-bs-slide-to="4" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2-4.jpg" src="assets/images/products/product2-4.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-4.jpg' %}" src="{% static 'assets/images/products/product2-4.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                                 <div class="list-inline-item" id="carousel-selector-5" data-bs-slide-to="5" data-bs-target="#quickView">
-                                                    <img class="blur-up lazyload" data-src="assets/images/products/product2-5.jpg" src="assets/images/products/product2-5.jpg" alt="product" title="Product" width="625" height="808" />
+                                                    <img class="blur-up lazyload" data-src="{% static 'assets/images/products/product2-5.jpg' %}" src="{% static 'assets/images/products/product2-5.jpg' %}" alt="product" title="Product" width="625" height="808" />
                                                 </div>
                                             </div>
                                             <!-- End Thumbnail slide -->
@@ -2433,9 +2382,9 @@
                                             <div class="product-item swatches-image w-100 mb-3 swatch-0 option1" data-option-index="0">
                                                 <label class="label d-flex align-items-center">Color:<span class="slVariant ms-1 fw-bold">Blue</span></label>
                                                 <ul class="variants-clr swatches d-flex-center pt-1 clearfix">
-                                                    <li class="swatch large radius available active"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue" /></li>
-                                                    <li class="swatch large radius available"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Black" /></li>
-                                                    <li class="swatch large radius available"><img src="assets/images/products/swatches/blue-red.jpg" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Pink" /></li>
+                                                    <li class="swatch large radius available active"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue" /></li>
+                                                    <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Black" /></li>
+                                                    <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Pink" /></li>
                                                     <li class="swatch large radius available green"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"></span></li>
                                                     <li class="swatch large radius soldout yellow"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"></span></li>
                                                 </ul>
@@ -2458,15 +2407,15 @@
                                                         <a class="qtyBtn plus" href="#;"><i class="icon anm anm-plus-l" aria-hidden="true"></i></a>
                                                     </div>
                                                 </div>                                
-                                                <div class="addtocart ms-3 fl-1">
-                                                    <button type="submit" name="add" class="btn product-cart-submit w-100"><span>Add to cart</span></button>
+                                                <div class="{% static 'addtocart ms-3 fl-1">
+                                                    <button type="submit" name="{% static 'add" class="btn product-cart-submit w-100"><span>Add to cart</span></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                     <div class="wishlist-btn d-flex-center">
-                                        <a class="add-wishlist d-flex-center me-3" href="wishlist-style1.html" title="Add to Wishlist"><i class="icon anm anm-heart-l me-1"></i> <span>Add to Wishlist</span></a>
-                                        <a class="add-compare d-flex-center" href="compare-style1.html" title="Add to Compare"><i class="icon anm anm-random-r me-2"></i> <span>Add to Compare</span></a>
+                                        <a class="{% static 'add-wishlist d-flex-center me-3" href="wishlist-style1.html" title="Add to Wishlist"><i class="icon anm anm-heart-l me-1"></i> <span>Add to Wishlist</span></a>
+                                        <a class="{% static 'add-compare d-flex-center" href="compare-style1.html" title="Add to Compare"><i class="icon anm anm-random-r me-2"></i> <span>Add to Compare</span></a>
                                     </div>
                                     <!-- Social Sharing -->
                                     <div class="social-sharing share-icon d-flex-center mx-0 mt-3">
@@ -2491,7 +2440,7 @@
             <div class="product-notification mobile-hide" id="dismiss">
                 <span class="close" aria-hidden="true"><i class="icon anm anm-times-r"></i></span>
                 <div class="media d-flex align-items-center">
-                    <a href="product-layout1.html" class="mediaImg"><img class="w-100 h-100 blur-up lazyload" src="assets/images/products/product2-120x170.jpg" data-src="assets/images/products/product2-120x170.jpg" alt="Cuff Beanie Cap" width="120" height="170" /></a>
+                    <a href="product-layout1.html" class="mediaImg"><img class="w-100 h-100 blur-up lazyload" src="{% static 'assets/images/products/product2-120x170.jpg' %}" data-src="{% static 'assets/images/products/product2-120x170.jpg' %}" alt="Cuff Beanie Cap" width="120" height="170" /></a>
                     <div class="media-body ms-3">
                         <p class="smtlt mb-0">Someone purchsed a</p>
                         <h5 class="pname"><a href="product-layout1.html">Cuff Beanie Cap</a></h5>
@@ -2509,7 +2458,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             <div class="newsletter-wrap d-flex flex-column">
                                 <div class="newsltr-img d-none d-sm-none d-md-block">
-                                    <img class="rounded-bottom-0 blur-up lazyload" data-src="assets/images/newsletter/newsletter-s6.webp" src="assets/images/newsletter/newsletter-s6.webp" alt="Join Our Newsletter Get 20% OFF First Order" title="Join Our Newsletter Get 20% OFF First Order" width="582" height="202" />
+                                    <img class="rounded-bottom-0 blur-up lazyload" data-src="{% static 'assets/images/newsletter/newsletter-s6.webp" src="{% static 'assets/images/newsletter/newsletter-s6.webp" alt="Join Our Newsletter Get 20% OFF First Order" title="Join Our Newsletter Get 20% OFF First Order" width="582" height="202" />
                                 </div>
                                 <div class="newsltr-text text-center">
                                     <div class="wraptext mw-100">

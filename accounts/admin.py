@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import User, Role, Profile
+from accounts.models import User, Role
 from crm.admin import BaseAdmin
 
 
@@ -19,11 +19,4 @@ class UserAdmin(BaseAdmin):
     readonly_fields = ["password"] + BaseAdmin.readonly_fields
     list_filter = ["user_type"]
     autocomplete_fields = ["roles"] + BaseAdmin.autocomplete_fields
-
-
-@admin.register(Profile)
-class ProfileAdmin(BaseAdmin):
-    list_display = ["user", "phone", "city", "state"]
-    search_fields = ["user", "city", "state", "address"]
-    list_filter = ["city", "state"]
 

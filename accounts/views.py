@@ -50,6 +50,7 @@ class UserSignupView(View, CustomRequestUtil):
         payload = {
             'email': request.POST.get('email'),
             'password': request.POST.get('password'),
+            'password2': request.POST.get('confirm-password'),
             'first_name': request.POST.get('first-name'),
             'last_name': request.POST.get('last-name'),
         }

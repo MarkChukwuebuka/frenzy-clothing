@@ -9,8 +9,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import phonenumbers
 
-from accounts.models import Profile
-
 T = TypeVar("T")
 
 
