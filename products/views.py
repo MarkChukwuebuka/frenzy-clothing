@@ -20,10 +20,14 @@ class RetrieveUpdateDeleteProductView(View, CustomRequestUtil):
         product, error = product_service.fetch_single(kwargs.get("product_id"))
 
         related_products = product_service.get_related_products(product.id)
+        ratings_data = product_service.fetch_product_ratings(product.id)
+        avg_rating = round(ratings_data.get('avg_rating', 0), 1)
 
         self.extra_context_data = {
             "title": product.name,
-            "related_products": related_products
+            "related_products": related_products,
+            'ratings_data': {**ratings_data, 'avg_rating': avg_rating},
+            'rating_range': range(1, 6),
         }
 
         return self.process_request(

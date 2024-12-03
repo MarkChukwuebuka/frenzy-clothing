@@ -7,7 +7,7 @@ from services.util import CustomRequestUtil
 class WishlistService(CustomRequestUtil, LoginRequiredMixin):
 
     def add_or_remove(self, payload):
-        from product.models import Wishlist
+        from products.models import Wishlist
 
         message = None
         error = None
@@ -27,7 +27,7 @@ class WishlistService(CustomRequestUtil, LoginRequiredMixin):
         return message, error
 
     def fetch_list(self):
-        from product.models import Wishlist
+        from products.models import Wishlist
         q = Q(user=self.auth_user)
 
         return Wishlist.available_objects.filter(q).values(

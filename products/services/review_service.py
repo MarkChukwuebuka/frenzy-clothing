@@ -1,4 +1,4 @@
-from django.db.models import F, Q
+from django.db.models import F, Q, Avg
 from django.utils import timezone
 
 from services.util import CustomRequestUtil
@@ -7,7 +7,7 @@ from services.util import CustomRequestUtil
 class ProductReviewService(CustomRequestUtil):
 
     def create_single(self, payload):
-        from product.models import ProductReview
+        from products.models import ProductReview
         rating = payload.get("rating")
         review = payload.get("review")
         product = payload.get("product")
@@ -21,6 +21,12 @@ class ProductReviewService(CustomRequestUtil):
             )
         )
 
+        average_rating = ProductReview.available_objects.filter(product=product).aggregate(
+            avg_rating=Avg("rating")
+        )["avg_rating"]
+
+        product.update(rating=average_rating)
+
         if not is_created:
             return "You've updated your review on this product", None
 
@@ -29,7 +35,7 @@ class ProductReviewService(CustomRequestUtil):
         return message, None
 
     def fetch_list(self, product_id):
-        from product.models import ProductReview
+        from products.models import ProductReview
         q = Q(product_id=product_id)
 
         return ProductReview.available_objects.filter(q).values(

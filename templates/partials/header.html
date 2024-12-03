@@ -57,14 +57,14 @@
                                             <ul class="row mmWrapper">
                                                 <li class="lvl-1 col-md-6 col-lg-6">
                                                     <ul class="subLinks">
-                                                        {% for category in categories|slice:":(categories|length+1)//2" %}
+                                                        {% for category in left_categories %}
                                                         <li class="lvl-2"><a href="{% url 'category' category.name %}" class="site-nav lvl-2">{{category.name}}</a></li>
                                                         {% endfor %}
                                                     </ul>
                                                 </li>
                                                 <li class="lvl-1 col-md-6 col-lg-6">
                                                     <ul class="subLinks">
-                                                        {% for category in categories|slice:"(categories|length+1)//2:" %}
+                                                        {% for category in right_categories %}
                                                         <li class="lvl-2"><a href="{% url 'category' category.name %}" class="site-nav lvl-2">{{category.name}}</a></li>
                                                         {% endfor %}
                                                     </ul>

@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Count, Case, When, ExpressionWrapper, DecimalField, F, Q
+from django.db.models import Count, Case, When, ExpressionWrapper, DecimalField, F, Q, Avg
 
 from services.util import CustomRequestUtil
 
@@ -57,4 +57,39 @@ class ProductService(CustomRequestUtil):
             return None, self.make_error("Product does not exist")
 
         return product, None
+
+    def fetch_product_ratings(self, product_id):
+        from products.models import ProductReview
+
+        # Aggregate data for average rating and ratings distribution
+        ratings_data = ProductReview.available_objects.filter(product_id=product_id).aggregate(
+            avg_rating=Avg('rating'),
+            total_reviews=Count('id'),
+        )
+
+        # Distribution of ratings (e.g., 5 stars, 4 stars, etc.)
+        rating_distribution = ProductReview.available_objects.filter(product_id=product_id).values(
+            'rating'
+        ).annotate(
+            count=Count('id')
+        )
+
+        # Format distribution into a list for progress bar calculations
+        total_reviews = ratings_data['total_reviews'] or 1
+        rating_distribution = [
+            {
+                'rating': i,
+                'count': next((x['count'] for x in rating_distribution if x['rating'] == i), 0),
+                'percentage': (next((x['count'] for x in rating_distribution if x['rating'] == i),
+                                    0) / total_reviews) * 100
+            }
+            for i in range(5, 0, -1)
+        ]
+
+        return {
+            'avg_rating': round(ratings_data['avg_rating'] or 0, 1),
+            'total_reviews': ratings_data['total_reviews'],
+            'rating_distribution': rating_distribution,
+        }
+
 

@@ -15,6 +15,7 @@ class Availability(models.TextChoices):
 
 class Category(BaseModel):
     name = models.CharField(max_length=255)
+    cover_image = CloudinaryField('cover image', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -34,7 +35,7 @@ class Product(BaseModel):
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=15, decimal_places=2, default=0)
     percentage_discount = models.IntegerField(null=True, blank=True)
-    sku = models.CharField(max_length=255, default=generate_sku, unique=True)
+    sku = models.CharField(max_length=255, blank=True, null=True, unique=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="product_tags")
     tags = models.ManyToManyField(Tag, blank=True, related_name="product_categories")
     description = models.TextField(null=True, blank=True)
@@ -53,6 +54,12 @@ class Product(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+    def save(self, *args, **kwargs):
+        if not self.sku and self.name:
+            self.sku = generate_sku(self.name)
+        super().save(*args, **kwargs)
 
 
 class ProductReview(BaseModel):
