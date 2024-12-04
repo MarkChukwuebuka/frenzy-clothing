@@ -13,7 +13,7 @@ class StatusChoices(models.TextChoices):
     delivered = 'Delivered'
 
 
-class Order(BaseModel):
+class   Order(BaseModel):
 
     user = models.ForeignKey(User, related_name='orders', blank=True, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=250, default="")
@@ -26,7 +26,7 @@ class Order(BaseModel):
     paid = models.BooleanField(default=False)
     total_cost = models.IntegerField(default=0)
     status = models.CharField(max_length=25, choices=StatusChoices.choices, default=StatusChoices.ordered)
-
+    ref = models.CharField(max_length=250, null=True, blank=True)
 
     class Meta:
         ordering = ('-created_at',)

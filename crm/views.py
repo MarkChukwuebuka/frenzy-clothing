@@ -1,7 +1,6 @@
 from django.views import View
 
 from products.models import Category
-from products.services.dotd_service import DOTDService, TopShopperService
 from products.services.product_service import ProductService
 from services.util import CustomRequestUtil
 
@@ -21,15 +20,10 @@ class HomeView(View, CustomRequestUtil):
         best_seller = product_service.fetch_list()[:10]
 
         categories = Category.objects.all()
-        split_point = (len(categories) + 1) // 2  # Calculate the middle point
-        left_categories = categories[:split_point]
-        right_categories = categories[split_point:]
 
         self.extra_context_data["top_rated"] = top_rated
         self.extra_context_data["new_arrivals"] = new_arrivals
         self.extra_context_data["best_seller"] = best_seller
-        self.extra_context_data["left_categories"] = left_categories
-        self.extra_context_data["right_categories"] = right_categories
         self.extra_context_data["categories"] = categories
 
         return self.process_request(request)

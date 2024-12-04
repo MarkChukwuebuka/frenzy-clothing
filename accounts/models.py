@@ -1,7 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.db.models import TextChoices, Q
-from django.db.models.signals import post_save
+
 
 from crm.models import BaseModel
 
@@ -39,8 +39,8 @@ class User(AbstractBaseUser, BaseModel):
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=70, null=True, blank=True)
-    image_url = models.URLField(null=True, blank=True)
+    phone_number = models.CharField(max_length=255, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
     user_type = models.CharField(
         max_length=255, default=UserTypes.customer, choices=UserTypes.choices
     )

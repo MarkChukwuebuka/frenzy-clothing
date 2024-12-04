@@ -82,13 +82,22 @@ class CustomRequestUtil(CustomPermissionRequired):
         return message
 
     def process_request(self, request, target_view=None, target_function=None, **extra_args):
+        from products.models import Category
+
         if not self.context:
             self.context = dict()
 
-        self.context['request'] = request
-        self.context["is_sweet_alert"] = True
+        categories = Category.objects.all()
+        split_point = (len(categories) + 1) // 2  # Calculate the middle point
+        left_categories = categories[:split_point]
+        right_categories = categories[split_point:]
 
-        self.request.session["is_sweet_alert"] = True
+        self.context['request'] = request
+        self.context["left_categories"] = left_categories
+        self.context["right_categories"] = right_categories
+
+        #
+        # self.request.session["is_sweet_alert"] = True
 
         if self.permission_required:
             if not self.has_permission():

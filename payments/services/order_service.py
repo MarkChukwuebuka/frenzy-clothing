@@ -1,7 +1,34 @@
+import random
+import string
+from datetime import datetime
+
 from django.utils import timezone
 
 from payments.models import Order
 from services.util import CustomRequestUtil
+
+
+def generate_order_ref(prefix="ORD"):
+    """
+    Generate a unique reference number for an order.
+
+    Args:
+        prefix (str): A prefix for the reference number (default is "ORD").
+
+    Returns:
+        str: A unique order reference number.
+    """
+    # Current timestamp in the format YYYYMMDDHHMMSS
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+
+    # Random alphanumeric string of 6 characters
+    random_str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+    # Combine prefix, timestamp, and random string
+    ref_number = f"{prefix}-{timestamp}-{random_str}"
+
+    return ref_number
+
 
 
 class OrderService(CustomRequestUtil):
@@ -16,7 +43,7 @@ class OrderService(CustomRequestUtil):
             address=payload.get("address"),
             phone=payload.get("phone"),
             lga=payload.get("lga"),
-
+            order_ref=generate_order_ref()
         )
 
         return order
@@ -25,7 +52,7 @@ class OrderService(CustomRequestUtil):
         return self.get_base_query().filter(user=self.auth_user)
 
     def get_base_query(self):
-        qs = Order.available_objects.select_related("user").prefetch_related("payment")
+        qs = Order.available_objects.select_related("user")
 
         return qs
 

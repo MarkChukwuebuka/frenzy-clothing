@@ -3,6 +3,7 @@ from django.views import View
 
 from accounts.services.auth_service import AuthService
 from accounts.services.user_service import UserService
+from payments.models import Order
 from services.util import CustomRequestUtil
 
 
@@ -62,11 +63,20 @@ class UserSignupView(View, CustomRequestUtil):
 
 class UserDashboardView(View, CustomRequestUtil):
     template_name = 'dashboard.html'
+
     extra_context_data = {
         "title": "Dashboard",
+
     }
 
     def get(self, request, *args, **kwargs):
+        completed_orders = Order.objects.filter(user=self.auth_user, paid=True).count() or 0
+        pending_orders = Order.objects.filter(user=self.auth_user, paid=False).count() or 0
+        orders_count = Order.objects.filter(user=self.auth_user).count() or 0
+
+        self.extra_context_data["completed_orders"] = completed_orders
+        self.extra_context_data["orders_count"] = orders_count
+        self.extra_context_data["pending_orders"] = pending_orders
         return self.process_request(request)
 
 

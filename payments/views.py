@@ -5,9 +5,10 @@ from django.contrib import messages
 from django.views import View
 
 from cart.services.cart_service import CartService
+from products.models import Category
 from products.services.product_service import ProductService
 from services.util import CustomRequestUtil
-from .models import Payment, OrderItem, Order
+from .models import Payment, OrderItem, Order, BankAccount
 
 from django.http import JsonResponse
 
@@ -52,8 +53,18 @@ def verify_payment(request, ref):
 
 @login_required
 def start_order(request):
+    categories = Category.objects.all()
+    split_point = (len(categories) + 1) // 2  # Calculate the middle point
+    left_categories = categories[:split_point]
+    right_categories = categories[split_point:]
+    bank = BankAccount.objects.filter(id=1).first()
+
     context = {
-        "title":"Checkout"
+        "title":"Checkout",
+        "left_categories": left_categories,
+        "right_categories": right_categories,
+        "bank": bank
+
     }
     cart = CartService(request)
     user = request.user
@@ -108,7 +119,9 @@ def start_order(request):
             'order': order,
             'total_cost': total_cost,
             'payment': payment,
-            'amount': payment.amount_value()
+            'amount': payment.amount_value(),
+            "left_categories": left_categories,
+            "right_categories": right_categories
         }
         cart.clear()
         return render(request, 'order-success.html', context)
