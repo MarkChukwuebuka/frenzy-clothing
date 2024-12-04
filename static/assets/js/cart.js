@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.qtyplus').forEach(function (element) {
         element.addEventListener('click', function (e) {
             e.preventDefault();
+            console.log("increased by 1");
             var input = this.parentElement.querySelector('input.input-qty');
             var currentValue = parseInt(input.value);
             var productId = input.id.replace('select', ''); // Extract product ID from input field ID
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 input.value = 1; // If the input value is not a number, set it to 1
             }
-
+            console.log("increased by 1");
             updateCart(productId, input.value); // Trigger the update after increment
         });
     });

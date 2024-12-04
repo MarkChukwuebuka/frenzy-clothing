@@ -81,3 +81,12 @@ class Payment(BaseModel):
     def amount_value(self):
         return int(self.amount) * 100
 
+
+
+class BankAccount(models.Model):
+    bank_name = models.CharField(max_length=255)
+    account_name = models.CharField(max_length=255)
+    account_number = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.bank_name

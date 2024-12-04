@@ -80,7 +80,7 @@
                                 <li><i class="icon anm anm-cc-stripe"></i></li>
                                 <li><i class="icon anm anm-cc-jcb"></i></li>
                             </ul>
-                            <div class="copytext">&copy; 2024 Hema. All Rights Reserved.</div>
+                            <div class="copytext">&copy; 2024 Fr3e Clothing. All Rights Reserved.</div>
                         </div>
                     </div>
                 </div>
@@ -93,20 +93,26 @@
                     <a href="shop-grid-view.html"><i class="menubar-icon anm anm-th-large-l"></i><span class="menubar-label">Shop</span></a>
                 </div>
                 <div class="menubar-account menubar-item">
-                    <a href="my-account.html"><i class="menubar-icon icon anm anm-user-al"></i><span class="menubar-label">Account</span></a>
+                    {% if user.is_authenticated %}
+                        <a href=""><i class="menubar-icon icon anm anm-user-al"></i><span class="menubar-label">Account</span></a>
+
+                    {% else %}
+                        <a href="{% url 'login' %}"><i class="menubar-icon icon anm anm-user-al"></i><span class="menubar-label">Account</span></a>
+
+                    {% endif %}
                 </div>
                 <div class="menubar-search menubar-item">
                     <a href="{% url 'home' %}"><span class="menubar-icon anm anm-home-l"></span><span class="menubar-label">Home</span></a>
                 </div>
                 <div class="menubar-wish menubar-item">
-                    <a href="wishlist-style1.html">
-                        <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-heart-l"></i><span class="wishlist-count counter menubar-count">0</span></span>
+                    <a href="{% url 'wishlist' %}">
+                        <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-heart-l"></i></span>
                         <span class="menubar-label">Wishlist</span>
                     </a>
                 </div>
                 <div class="menubar-cart menubar-item">
-                    <a href="#;" class="btn-minicart" data-bs-toggle="offcanvas" data-bs-target="#minicart-drawer">
-                        <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-cart-l"></i><span class="cart-count counter menubar-count">2</span></span>
+                    <a href="{% url 'cart' %}" class="btn-minicart" >
+                        <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-cart-l"></i><span class="cart-count counter menubar-count">{{ cart|length }}</span></span>
                         <span class="menubar-label">Cart</span>
                     </a>
                 </div>
@@ -215,112 +221,6 @@
             </div>
             <!--End MiniCart Drawer-->
 
-            <!-- Product Quickshop Modal-->
-            <div class="quickshop-modal modal fade" id="quickshop_modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <form method="post" action="#" id="product-form-quickshop" class="product-form align-items-center">
-                                <!-- Product Info -->
-                                <div class="row g-0 item mb-3">
-                                    <a class="col-4 product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="{% static 'assets/images/products/addtocart-modal.jpg' %}" src="{% static 'assets/images/products/addtocart-modal.jpg' %}" alt="Product" title="Product" width="625" height="800" /></a>
-                                    <div class="col-8 product-details">
-                                        <div class="product-variant ps-3">
-
-                                            <a class="product-title" href="product-layout1.html">Weave Hoodie Sweatshirt</a>
-                                            <div class="priceRow mt-2 mb-3">
-                                                <div class="product-price m-0"><span class="old-price">$114.00</span><span class="price">$99.00</span></div>
-                                            </div>
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="#;"><i class="icon anm anm-minus-r"></i></a>
-                                                <input type="text" name="quantity" value="1" class="qty">
-                                                <a class="qtyBtn plus" href="#;"><i class="icon anm anm-plus-r"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Product Info -->
-                                <!-- Swatches Color -->
-                                <div class="variants-clr swatches-image clearfix mb-3 swatch-0 option1" data-option-index="0">
-                                    <label class="label d-flex justify-content-center">Color:<span class="slVariant ms-1 fw-bold">Black</span></label>
-                                    <ul class="swatches d-flex-justify-center pt-1 clearfix">
-                                        <li class="swatch large radius available active"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue" /></li>
-                                        <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Black" /></li>
-                                        <li class="swatch large radius available"><img src="{% static 'assets/images/products/swatches/blue-red.jpg' %}" alt="image" width="70" height="70" data-bs-toggle="tooltip" data-bs-placement="top" title="Pink" /></li>
-                                        <li class="swatch large radius available green"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"></span></li>
-                                        <li class="swatch large radius soldout yellow"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"></span></li>
-                                    </ul>
-                                </div>
-                                <!-- End Swatches Color -->
-                                <!-- Swatches Size -->
-                                <div class="variants-size swatches-size clearfix mb-4 swatch-1 option2" data-option-index="1">
-                                    <label class="label d-flex justify-content-center">Size:<span class="slVariant ms-1 fw-bold">S</span></label>
-                                    <ul class="size-swatches d-flex-justify-center pt-1 clearfix">
-                                        <li class="swatch large radius soldout"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="XS">XS</span></li>
-                                        <li class="swatch large radius available active"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="S">S</span></li>
-                                        <li class="swatch large radius available"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="M">M</span></li>
-                                        <li class="swatch large radius available"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="L">L</span></li>
-                                        <li class="swatch large radius available"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="XL">XL</span></li>
-                                    </ul>
-                                </div>
-                                <!-- End Swatches Size -->
-                                <!-- Product Action -->
-                                <div class="product-form-submit d-flex-justify-center">
-                                    <button type="submit" name="{% static 'add" class="btn product-cart-submit me-2"><span>Add to cart</span></button>
-                                    <button type="submit" name="sold" class="btn btn-secondary product-sold-out d-none" disabled="disabled">Sold out</button>
-                                    <button type="submit" name="buy" class="btn btn-secondary proceed-to-checkout">Buy it now</button>
-                                </div>
-                                <!-- End Product Action -->
-                                <div class="text-center mt-3"><a class="text-link" href="product-layout1.html">View More Details</a></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Quickshop Modal -->
-
-            <!-- Product Addtocart Modal-->
-            <div class="{% static 'addtocart-modal modal fade" id="{% static 'addtocart_modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <form method="post" action="#" id="product-form-addtocart" class="product-form align-items-center">
-                                <h3 class="title mb-3 text-success text-center">Added to cart Successfully!</h3>
-                                <div class="row d-flex-center text-center">
-                                    <div class="col-md-6">
-                                        <!-- Product Image -->
-                                        <a class="product-image" href="product-layout1.html"><img class="blur-up lazyload" data-src="{% static 'assets/images/products/addtocart-modal.jpg' %}" src="{% static 'assets/images/products/addtocart-modal.jpg' %}" alt="Product" title="Product" width="625" height="800" /></a>
-                                        <!-- End Product Image -->
-                                    </div>
-                                    <div class="col-md-6 mt-3 mt-md-0">
-                                        <!-- Product Info -->
-                                        <div class="product-details">
-
-                                            <a class="product-title" href="product-layout1.html">Cuff Beanie Cap</a>
-                                            <p class="product-clr my-2 text-muted">Black / XL</p>
-                                        </div>
-                                        <div class="{% static 'addcart-total rounded-5">
-                                            <p class="product-items mb-2">There are <strong>1</strong> items in your cart</p>
-                                            <p class="d-flex-justify-center">Total: <span class="price">$198.00</span></p>
-                                        </div>
-                                        <!-- End Product Info -->
-                                        <!-- Product Action -->
-                                        <div class="product-form-submit d-flex-justify-center">
-                                            <a href="#" class="btn btn-outline-primary product-continue w-100">Continue Shopping</a>
-                                            <a href="cart-style1.html" class="btn btn-secondary product-viewcart w-100 my-2 my-md-3">View Cart</a>
-                                            <a href="checkout-style1.html" class="btn btn-primary product-checkout w-100">Proceed to checkout</a>
-                                        </div>
-                                        <!-- End Product Action -->
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Product Addtocart Modal -->
 
             <!-- Product Quickview Modal-->
 <!--            <div class="quickview-modal modal fade" id="quickview_modal" tabindex="-1" aria-hidden="true">-->

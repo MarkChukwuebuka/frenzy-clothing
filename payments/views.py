@@ -102,17 +102,16 @@ def start_order(request):
         order.total_cost = total_cost
         order.save()
 
-        pub_key = settings.PAYSTACK_PUBLISHABLE
 
         context = {
 
             'order': order,
             'total_cost': total_cost,
             'payment': payment,
-            'paystack_pub_key': pub_key,
             'amount': payment.amount_value()
         }
-        return render(request, 'make-payment.html', context)
+        cart.clear()
+        return render(request, 'order-success.html', context)
 
     return render(request, 'checkout.html', context)
 

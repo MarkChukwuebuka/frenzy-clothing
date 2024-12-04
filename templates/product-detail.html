@@ -684,7 +684,7 @@ input[type="radio"]:checked ~ .star-label i {
                                             {% if product.percentage_discount %}
                                                 <span class="price old-price">&#8358;{{related_product.price|floatformat:2|intcomma}}</span><span class="price">&#8358;{{related_product.discounted_price|floatformat:2|intcomma}}</span>
                                             {% else %}
-                                                <span class="price">{{related_product.price|floatformat:2|intcomma}}</span>
+                                                <span class="price">&#8358;{{related_product.price|floatformat:2|intcomma}}</span>
                                             {% endif %}
                                         </div>
                                         <!-- End Product Price -->
