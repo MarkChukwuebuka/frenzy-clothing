@@ -93,11 +93,10 @@ class CustomRequestUtil(CustomPermissionRequired):
         right_categories = categories[split_point:]
 
         self.context['request'] = request
+        self.context['categories'] = categories
         self.context["left_categories"] = left_categories
         self.context["right_categories"] = right_categories
 
-        #
-        # self.request.session["is_sweet_alert"] = True
 
         if self.permission_required:
             if not self.has_permission():

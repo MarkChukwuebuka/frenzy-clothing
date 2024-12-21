@@ -43,7 +43,7 @@ class OrderService(CustomRequestUtil):
             address=payload.get("address"),
             phone=payload.get("phone"),
             lga=payload.get("lga"),
-            order_ref=generate_order_ref()
+            ref=generate_order_ref()
         )
 
         return order
@@ -52,12 +52,12 @@ class OrderService(CustomRequestUtil):
         return self.get_base_query().filter(user=self.auth_user)
 
     def get_base_query(self):
-        qs = Order.available_objects.select_related("user")
+        qs = Order.available_objects.select_related("user").prefetch_related("items__product")
 
         return qs
 
-    def fetch_single(self, order_id):
-        order = self.get_base_query().filter(id=order_id).first()
+    def fetch_single(self, ref):
+        order = self.get_base_query().filter(ref=ref).first()
         if not order:
             return None, self.make_error("Order does not exist")
 

@@ -12,7 +12,7 @@ class ProductService(CustomRequestUtil):
     def fetch_list(self, filter_params=None, category=None):
         q = Q()
         if category:
-            q &= Q(category__iexact=category)
+            q &= Q(categories__name__iexact=category)
 
         return self.get_base_query().filter(q)
 

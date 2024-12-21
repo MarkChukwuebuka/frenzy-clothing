@@ -1,6 +1,7 @@
 import random
 import string
 
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views import View
 
@@ -44,7 +45,7 @@ class RetrieveUpdateDeleteProductView(View, CustomRequestUtil):
 
         self.extra_context_data = {
             "title": product.name,
-            'product':product
+            'product':product,
         }
 
         payload = {
@@ -63,7 +64,7 @@ class RetrieveUpdateDeleteProductView(View, CustomRequestUtil):
 
 class CreateListProductView(View, CustomRequestUtil):
     extra_context_data = {
-        "title": "Luxe Shop"
+        "title": "Our Shop"
     }
 
     def get(self, request, *args, **kwargs):
@@ -71,8 +72,10 @@ class CreateListProductView(View, CustomRequestUtil):
         self.context_object_name = 'products'
 
         category = kwargs.get('name', None)
-
         product_service = ProductService(self.request)
+
+        # paginator = Paginator(all_products, 20)
+        # page_number = request.GET.get('page', 1)
 
         return self.process_request(
             request, target_function=product_service.fetch_list, category=category

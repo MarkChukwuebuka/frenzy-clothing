@@ -81,6 +81,11 @@ def start_order(request):
             phone = request.POST.get("phone"),
         )
 
+        try:
+            receipt = request.FILES['screenshot']
+        except:
+            receipt = None
+
         order = OrderService(request).create_single(payload)
 
         total_cost = 0
@@ -107,19 +112,19 @@ def start_order(request):
                                                  )
 
         payment = Payment.available_objects.create(
-            amount=total_cost, email=user.email, user=user, order=order
+            amount=total_cost, email=user.email, user=user, order=order, receipt=receipt, ref=order.ref
         )
 
         order.total_cost = total_cost
+        order.ref = payment.ref
         order.save()
 
-
         context = {
-
+            'title': 'Thank You',
+            'items' : OrderItem.objects.filter(order=order),
             'order': order,
             'total_cost': total_cost,
             'payment': payment,
-            'amount': payment.amount_value(),
             "left_categories": left_categories,
             "right_categories": right_categories
         }
@@ -153,13 +158,12 @@ class RetrieveUpdateDeleteOrderView(View, CustomRequestUtil):
 
     def get(self, request, *args, **kwargs):
         order_service = OrderService(self.request)
-        order, error = order_service.fetch_single(kwargs.get("order_id"))
 
         self.extra_context_data = {
             "title": "Order"
         }
 
         return self.process_request(
-            request, target_function=order_service.fetch_single, order_id=kwargs.get("order_id")
+            request, target_function=order_service.fetch_single, ref=kwargs.get("ref")
         )
 

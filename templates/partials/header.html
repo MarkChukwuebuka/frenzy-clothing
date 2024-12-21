@@ -116,7 +116,7 @@
                                     <div class="customer-links">
                                         <ul class="m-0">
                                             {% if user.is_authenticated %}
-                                                <li><a href="my-account.html"><i class="icon anm anm-user-cil"></i>My Account</a></li>
+                                                <li><a href="{% url 'dashboard' %}"><i class="icon anm anm-user-cil"></i>My Account</a></li>
                                                 <li><a href="{% url 'wishlist' %}"><i class="icon anm anm-heart-l"></i>Wishlist</a></li>
                                                 <li><a href="{% url 'logout' %}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>
                                             {% else %}

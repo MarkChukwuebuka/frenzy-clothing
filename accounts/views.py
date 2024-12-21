@@ -4,6 +4,8 @@ from django.views import View
 from accounts.services.auth_service import AuthService
 from accounts.services.user_service import UserService
 from payments.models import Order
+from payments.services.order_service import OrderService
+from products.services.wishlist_service import WishlistService
 from services.util import CustomRequestUtil
 
 
@@ -73,10 +75,15 @@ class UserDashboardView(View, CustomRequestUtil):
         completed_orders = Order.objects.filter(user=self.auth_user, paid=True).count() or 0
         pending_orders = Order.objects.filter(user=self.auth_user, paid=False).count() or 0
         orders_count = Order.objects.filter(user=self.auth_user).count() or 0
+        wishlist_products = WishlistService(request).fetch_list()
+        orders = OrderService(request).fetch_list()
 
         self.extra_context_data["completed_orders"] = completed_orders
         self.extra_context_data["orders_count"] = orders_count
         self.extra_context_data["pending_orders"] = pending_orders
+        self.extra_context_data["wishlist_products"] = wishlist_products
+        self.extra_context_data["orders"] = orders
+
         return self.process_request(request)
 
 

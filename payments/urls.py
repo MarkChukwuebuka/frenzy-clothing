@@ -5,7 +5,7 @@ from payments.views import start_order, CreateListOrderView, RetrieveUpdateDelet
 urlpatterns = [
     path('order/', start_order, name='start_order'),
     path('my-orders/', CreateListOrderView.as_view(), name='my-orders'),
-    path('order/<int:order_id>/', RetrieveUpdateDeleteOrderView.as_view(), name='order-detail'),
+    path('order/<str:ref>/', RetrieveUpdateDeleteOrderView.as_view(), name='order-detail'),
 
 
 ]

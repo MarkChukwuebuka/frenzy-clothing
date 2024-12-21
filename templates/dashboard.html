@@ -176,7 +176,6 @@
                                             <table class="table align-middle text-center order-table">
                                                 <thead>
                                                     <tr class="table-head text-nowrap">
-                                                        <th scope="col">image</th>
                                                         <th scope="col">Order Id</th>
                                                         <th scope="col">Product Details</th>
                                                         <th scope="col">Price</th>
@@ -187,12 +186,18 @@
                                                 <tbody>
                                                 {% for order in orders %}
                                                     <tr>
-                                                        <td><img class="blur-up lazyload" data-src="assets/images/products/product1-120x170.jpg" src="assets/images/products/product1-120x170.jpg" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="id">#12301</span></td>
+                                                        <td><span class="id">{{ order.ref }}</span></td>
                                                         <td><span class="name">Oxford Cuban Shirt</span></td>
-                                                        <td><span class="price fw-500">$99.00</span></td>
-                                                        <td><span class="badge rounded-pill bg-success custom-badge">Shipped</span></td>
-                                                        <td><a href="product-layout1.html" class="view"><i class="icon anm anm-eye btn-link fs-6"></i></a></td>
+                                                        <td><span class="price fw-500">{{order.total_cost}}</span></td>
+                                                        <td><span class='badge rounded-pill custom-badge {% if order.status == 'Ordered' %}bg-dark{% elif order.status == 'Shipped' %}
+                                                                bg-secondary
+                                                            {% else %}
+                                                                bg-success
+                                                            {% endif %}">
+                                                            {{ order.status }}
+
+                                                        </span></td>
+                                                        <td><a href="{% url 'order-details' order.ref %}" class="view"><i class="icon anm anm-eye btn-link fs-6"></i></a></td>
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
@@ -207,128 +212,6 @@
                                 </div>
                                 <!-- End My Orders -->
 
-                                <!-- Orders tracking -->
-                                <div class="tab-pane fade h-100" id="orderstracking">
-                                    <div class="orders-card mt-0 h-100">    
-                                        <div class="top-sec d-flex-justify-center justify-content-between mb-4">
-                                            <h2 class="mb-0">Orders tracking</h2>
-                                        </div>
-
-                                        <form class="orderstracking-from" method="post" action="#">
-                                            <p class="mb-3">To track your order please enter your OrderID in the box below and press "Track" button. This was given to you on your receipt and in the confirmation email you should have received.</p>
-                                            <div class="row align-items-center">
-                                                <div class="form-group col-md-5 col-lg-5">
-                                                    <label for="orderId" class="d-none">Order ID <span class="required-f">*</span></label>
-                                                    <input name="orderId" placeholder="Order ID" value="" id="orderId" type="text" required>
-                                                </div>
-                                                <div class="form-group col-md-5 col-lg-5">
-                                                    <label for="billingEmail" class="d-none">Billing email <span class="required-f">*</span></label>
-                                                    <input name="billingEmail" placeholder="Billing email" value="" id="billingEmail" type="text" required>
-                                                </div>
-                                                <div class="form-group col-md-2 col-lg-2">
-                                                    <button type="submit" class="btn rounded w-100"><span>Track</span></button>
-                                                </div>
-                                            </div>
-                                        </form>
-
-                                        <div class="row mt-2">
-                                            <div class="col-sm-12">
-                                                <h3>Status for order no: 000123</h3>
-                                                <!-- Status Order -->
-                                                <div class="row mt-3">
-                                                    <div class="col-lg-2 col-md-3 col-sm-4">
-                                                        <div class="product-img mb-3 mb-sm-0">
-                                                            <img class="rounded-0 blur-up lazyload" data-src="assets/images/products/orders-tracking-product.jpg" src="assets/images/products/orders-tracking-product.jpg" alt="product" title="" width="545" height="700" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-9 col-sm-8">
-                                                        <div class="tracking-detail d-flex-center">
-                                                            <ul>
-                                                                <li>
-                                                                    <div class="left"><span>Order name</span></div>
-                                                                    <div class="right"><span>Cuff Beanie Cap</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>customer number</span></div>
-                                                                    <div class="right"><span>000123</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>order date</span></div>
-                                                                    <div class="right"><span>14 Nov 2021</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>Ship Date</span></div>
-                                                                    <div class="right"><span>16 Nov 2021</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>shipping address</span></div>
-                                                                    <div class="right"><span>55 Gallaxy Enque, 2568 steet, 23568 NY</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>Carrier</span></div>
-                                                                    <div class="right"><span>Ipsum</span></div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="left"><span>carrier tracking number</span></div>
-                                                                    <div class="right"><span>000123</span></div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12 col-sm-12 mt-4 mt-lg-0">
-                                                        <div class="tracking-map map-section ratio ratio-16x9 h-100">
-                                                            <iframe src="https://www.google.com/maps/embed?pb=" allowfullscreen="" height="650"></iframe>                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Status Order -->
-                                                <!-- Tracking Steps -->
-                                                <div class="tracking-steps nav mt-5 mb-4 clearfix">
-                                                    <div class="step done"><span>order placed</span></div>
-                                                    <div class="step done"><span>preparing to ship</span></div>
-                                                    <div class="step current"><span>shipped</span></div>
-                                                    <div class="step"><span>delivered</span></div>
-                                                </div>
-                                                <!-- End Tracking Steps -->
-                                                <!-- Order Table -->
-                                                <div class="table-bottom-brd table-responsive">
-                                                    <table class="table align-middle text-center order-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Date</th>
-                                                                <th scope="col">Time</th>
-                                                                <th scope="col">Description</th>
-                                                                <th scope="col">Location</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>14 May 2023</td>
-                                                                <td>08.00 AM</td>
-                                                                <td><span class="badge rounded-pill bg-success custom-badge">Shipped</span></td>
-                                                                <td>Canada</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>15 May 2023</td>
-                                                                <td>12.00 AM</td>
-                                                                <td><span class="badge rounded-pill bg-dark custom-badge">Shipping info received</span></td>
-                                                                <td>California</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>16 May 2023</td>
-                                                                <td>10.00 AM</td>
-                                                                <td><span class="badge rounded-pill bg-secondary custom-badge">Origin scan</span></td>
-                                                                <td>Landon</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- End Order Table -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Orders tracking -->
 
                                 <!-- My Wishlist -->
                                 <div class="tab-pane fade h-100" id="wishlist">
@@ -338,48 +221,38 @@
                                         </div>
 
                                         <div class="table-bottom-brd table-responsive">
+                                            {% if wishlist_products %}
                                             <table class="table align-middle text-center order-table">
                                                 <thead>
                                                     <tr class="table-head text-nowrap">
                                                         <th scope="col">Image</th>
-                                                        <th scope="col">Order Id</th>
-                                                        <th scope="col">Product Details</th>
+                                                        <th scope="col">Name</th>
                                                         <th scope="col">Price</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for item in wishlist_products %}
                                                     <tr>
-                                                        <td><img class="blur-up lazyload" data-src="assets/images/products/product1-120x170.jpg" src="assets/images/products/product1-120x170.jpg" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="id">#12301</span></td>
-                                                        <td><span class="name">Oxford Cuban Shirt</span></td>
-                                                        <td><span class="price fw-500">$99.00</span></td>
-                                                        <td><a href="cart-style1.html" class="btn btn-md text-nowrap">Add to Cart</a></td>
+                                                        <td><img class="blur-up lazyload" data-src="{{ item.cover_image.url }}" src="{{ item.cover_image.url }}" width="50" alt="product" title="product" /></td>
+                                                        <td><span class="name">{{ item.name }}</span></td>
+                                                        <td>
+                                                            {% if product.percentage_discount %}
+                                                                <span class="price fw-500">&#8358;{{product.price|floatformat:2|intcomma}}</span><span class="price fw-500">&#8358;{{product.discounted_price|floatformat:2|intcomma}}</span>
+                                                            {% else %}
+                                                                <span class="price fw-500">&#8358;{{product.price|floatformat:2|intcomma}}</span>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td><a href="" class="btn btn-md text-nowrap">Add to Cart</a></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><img class="blur-up lazyload" data-src="assets/images/products/product2-120x170.jpg" src="assets/images/products/product2-120x170.jpg" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="id">#12302</span></td>
-                                                        <td><span class="name">Cuff Beanie Cap</span></td>
-                                                        <td><span class="price fw-500">$128.00</span></td>
-                                                        <td><a href="cart-style1.html" class="btn btn-md text-nowrap">Add to Cart</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><img class="blur-up lazyload" data-src="assets/images/products/product3-120x170.jpg" src="assets/images/products/product3-120x170.jpg" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="id">#12303</span></td>
-                                                        <td><span class="name">Flannel Collar Shirt</span></td>
-                                                        <td><span class="price fw-500">$114.00</span></td>
-                                                        <td><a href="cart-style1.html" class="btn btn-md text-nowrap">Add to Cart</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><img class="blur-up lazyload" data-src="assets/images/products/product4-120x170.jpg" src="assets/images/products/product4-120x170.jpg" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="id">#12304</span></td>
-                                                        <td><span class="name">Cotton Hooded Hoodie</span></td>
-                                                        <td><span class="price fw-500">$198.00</span></td>
-                                                        <td><a href="cart-style1.html" class="btn btn-md text-nowrap">Add to Cart</a></td>
-                                                    </tr>
+                                                    {% endfor %}
+
                                                 </tbody>
                                             </table>
-                                        </div>                                               
+                                            {% else %}
+                                                You have no items in your wishlist
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End My Wishlist -->

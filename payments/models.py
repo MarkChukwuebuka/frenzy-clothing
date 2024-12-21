@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.db.models.signals import post_save
 
@@ -13,7 +14,7 @@ class StatusChoices(models.TextChoices):
     delivered = 'Delivered'
 
 
-class   Order(BaseModel):
+class Order(BaseModel):
 
     user = models.ForeignKey(User, related_name='orders', blank=True, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=250, default="")
@@ -66,6 +67,7 @@ class Payment(BaseModel):
     verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     order = models.OneToOneField(Order, on_delete=models.SET_NULL, null=True, blank=True, related_name='payment')
+    receipt = CloudinaryField('receipt', blank=True, null=True)
 
     def __str__(self):
         return f"{self.user} - {self.amount}"
@@ -77,10 +79,6 @@ class Payment(BaseModel):
             if not object_with_similar_ref:
                 self.ref = ref
         super().save(*args, **kwargs)
-
-    def amount_value(self):
-        return int(self.amount) * 100
-
 
 
 class BankAccount(models.Model):
