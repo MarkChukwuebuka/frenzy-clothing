@@ -47,7 +47,7 @@ class FAQView(View, CustomRequestUtil):
 
 
 class AboutView(View, CustomRequestUtil):
-    template_name = "about.html"
+    template_name = "emails/payment-verified.html"
     extra_context_data = {
         "title": "About Us",
     }

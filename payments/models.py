@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from cloudinary.models import CloudinaryField
 from django.db import models
 from django.db.models.signals import post_save
@@ -6,6 +8,8 @@ from accounts.models import User
 from crm.models import BaseModel
 from products.models import Product
 import secrets
+
+from services.util import send_email
 
 
 class StatusChoices(models.TextChoices):
@@ -73,12 +77,28 @@ class Payment(BaseModel):
         return f"{self.user} - {self.amount}"
 
     def save(self, *args, **kwargs):
-        while not self.ref:
-            ref = secrets.token_urlsafe(10)
-            object_with_similar_ref = Payment.objects.filter(ref=ref)
-            if not object_with_similar_ref:
-                self.ref = ref
+        # Check if the payment already exists
+        if self.pk is not None:
+            old_payment = Payment.objects.get(pk=self.pk)
+
+            # Check if the `verified` status has changed
+            if old_payment.verified != self.verified:
+                if self.order:
+                    # Update the `paid` field of the associated order
+                    self.order.paid = self.verified
+                    self.order.save()
+
+                # Send email notification if `verified` is changed to True
+                if self.verified:
+                    context = {
+                        'name': self.order.first_name,
+                        'ref' : self.ref,
+                        'amount' : self.amount
+                    }
+                    send_email('payment-verified.html', context, 'Payment Verified', self.email)
+
         super().save(*args, **kwargs)
+
 
 
 class BankAccount(models.Model):
