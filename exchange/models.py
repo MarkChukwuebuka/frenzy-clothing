@@ -2,6 +2,7 @@ from cloudinary.models import CloudinaryField
 from django.db import models
 
 from crm.models import BaseModel
+from exchange.services.transaction_service import generate_trxn_ref
 
 
 class StatusChoices(models.TextChoices):
@@ -27,15 +28,17 @@ class Coin(BaseModel):
 class Transaction(BaseModel):
     coin = models.CharField(max_length=255)
     wallet_address = models.CharField(max_length=255)
-    network = models.CharField(max_length=255)
     bank_name = models.CharField(max_length=255)
     account_name = models.CharField(max_length=255)
     account_number = models.CharField(max_length=255)
     status = models.CharField(max_length=25, choices=StatusChoices.choices, default=StatusChoices.pending)
     trans_type = models.CharField(max_length=25, choices=TransTypeChoices.choices, default=TransTypeChoices.buy)
     paid = models.BooleanField(default=False)
-    rate = models.FloatField()
-    amount = models.FloatField()
+    rate = models.FloatField(null=True, blank=True)
+    amount_in_ngn = models.FloatField(null=True, blank=True)
+    amount_in_usd = models.FloatField(null=True, blank=True)
+    amount_in_crypto = models.FloatField(null=True, blank=True)
+    ref = models.CharField(max_length=255, default=generate_trxn_ref)
     user = models.ForeignKey("accounts.User", related_name="transactions", on_delete=models.CASCADE)
 
     def __str__(self):

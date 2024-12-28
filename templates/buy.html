@@ -35,7 +35,7 @@
 
                                         <form method="POST" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <h3 class="mb-3">Rate : &#8358;5000</h3>
+                                            <h3 class="mb-3">Rate : &#8358;{{ buy_rate }}</h3>
                                             <div class="row mb-3">
                                               <div class="col form-floating">
                                                   <select class="form-select" id="floatingSelect" name="coin" required>
@@ -74,11 +74,11 @@
                                               </div>
 
                                                 <div class="col form-floating">
-                                                  <input type="number" name="account-number" value="{{bank.account_number}}" class="form-control" readonly>
+                                                  <input type="text" name="account-number" value="{{bank.account_number}}" class="form-control" readonly>
                                                   <label style="margin-left:20px;" class="ml-3">Account Number</label>
                                               </div>
                                                 <div class="col form-floating">
-                                                  <input type="number" name="account-name" value="{{bank.account_name}}" class="form-control" readonly>
+                                                  <input type="text" name="account-name" value="{{bank.account_name}}" class="form-control" readonly>
                                                   <label style="margin-left:20px;" class="mb-3">Account Name</label>
                                               </div>
                                             </div>
