@@ -5,6 +5,7 @@ cloudinary==1.41.0
 dj-database-url==2.2.0
 Django==5.0.7
 django-cloudinary-storage==0.3.0
+django-smtp-ssl==1.0
 dnspython==2.6.1
 email_validator==2.2.0
 gunicorn==22.0.0

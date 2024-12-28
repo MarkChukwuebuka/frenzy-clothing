@@ -85,7 +85,7 @@
                                                     <img class="blur-up lazyload" data-src="{% static 'assets/images/icons/order.png' %}" src="{% static 'assets/images/icons/order.png' %}" alt="icon" width="64" height="64" />
                                                     <div class="content">
                                                         <h3 class="fs-5 mb-1 text-primary">{{completed_orders}}</h3>
-                                                        <p>Awaiting Payments</p>
+                                                        <p>Completed Payments</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,7 +177,6 @@
                                                 <thead>
                                                     <tr class="table-head text-nowrap">
                                                         <th scope="col">Order Id</th>
-                                                        <th scope="col">Product Details</th>
                                                         <th scope="col">Price</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">View</th>
@@ -187,8 +186,7 @@
                                                 {% for order in orders %}
                                                     <tr>
                                                         <td><span class="id">{{ order.ref }}</span></td>
-                                                        <td><span class="name">Oxford Cuban Shirt</span></td>
-                                                        <td><span class="price fw-500">{{order.total_cost}}</span></td>
+                                                        <td><span class="price fw-500">&#8358;{{order.total_cost|floatformat:2|intcomma}}</span></td>
                                                         <td><span class="badge rounded-pill custom-badge {% if order.status == 'Ordered' %}bg-dark{% elif order.status == 'Shipped' %}
                                                                 bg-secondary
                                                             {% else %}
@@ -197,7 +195,7 @@
                                                             {{ order.status }}
 
                                                         </span></td>
-                                                        <td><a href="{% url 'order-details' order.ref %}" class="view"><i class="icon anm anm-eye btn-link fs-6"></i></a></td>
+                                                        <td><a href="{% url 'order-detail' order.ref %}" class="view"><i class="icon anm anm-eye btn-link fs-6"></i></a></td>
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
@@ -234,16 +232,15 @@
                                                 <tbody>
                                                     {% for item in wishlist_products %}
                                                     <tr>
-                                                        <td><img class="blur-up lazyload" data-src="{{ item.cover_image.url }}" src="{{ item.cover_image.url }}" width="50" alt="product" title="product" /></td>
-                                                        <td><span class="name">{{ item.name }}</span></td>
+                                                        <td><img class="blur-up lazyload" data-src="{{ item.product_image.url }}" src="{{ item.product_image.url }}" width="50" alt="product" title="product" /></td>
+                                                        <td><span class="name">{{ item.product_name }}</span></td>
                                                         <td>
-                                                            {% if product.percentage_discount %}
-                                                                <span class="price fw-500">&#8358;{{product.price|floatformat:2|intcomma}}</span><span class="price fw-500">&#8358;{{product.discounted_price|floatformat:2|intcomma}}</span>
-                                                            {% else %}
-                                                                <span class="price fw-500">&#8358;{{product.price|floatformat:2|intcomma}}</span>
-                                                            {% endif %}
+
+                                                            <span class="price fw-500">&#8358;{{item.product_price|floatformat:2|intcomma}}</span>
+
                                                         </td>
-                                                        <td><a href="" class="btn btn-md text-nowrap">Add to Cart</a></td>
+                                                        <td><a href="" data-url="{% url 'add_to_cart' %}"
+                                                       data-product-id="{{ item.product_id }}" class="btn btn-md text-nowrap add_to_cart_button">Add to Cart</a></td>
                                                     </tr>
                                                     {% endfor %}
 
@@ -815,5 +812,44 @@
                 <!--End Main Content-->
             </div>
             <!-- End Body Container -->
+
+
+<script>
+
+
+
+    document.querySelectorAll('.add_to_cart_button').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        var productId = this.getAttribute('data-product-id');
+        var url = this.getAttribute('data-url');
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'add'
+            },
+            success: function(response) {
+                // Handle the success, like updating the cart count or showing a message
+                console.log('Product added to cart');
+                location.reload();
+            },
+            error: function(xhr, errmsg, err) {
+                // Handle the error
+                console.error('An error occurred while adding the product to cart');
+            }
+        });
+    });
+});
+
+
+
+
+</script>
+
 
 {% endblock content %}

@@ -52,7 +52,7 @@
                                     <tbody>
                                     {% for item in cart %}
                                         <tr class="cart-row cart-flex position-relative">
-                                            <td class="cart-delete text-center small-hide"><a href="#" class="cart-remove remove-icon position-static" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove to Cart"><i class="icon anm anm-times-r"></i></a></td>
+                                            <td class="cart-delete text-center small-hide"><a data-url="{% url 'update_cart' %}" class="cart-remove remove-icon position-static delete-product" data-index="{{item.product.id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove to Cart"><i class="icon anm anm-times-r"></i></a></td>
                                             <td class="cart-image cart-flex-item">
                                                 <a href="{% url 'product-detail' item.product.id %}"><img class="cart-image rounded-0 blur-up lazyload" data-src="{{ item.product.cover_image.url }}" src="{{ item.product.cover_image.url }}" alt="Sunset Sleep Scarf Top" width="120" height="170" /></a>
                                             </td>
@@ -61,15 +61,11 @@
                                                     <a href="{% url 'product-detail' item.product.id %}">{{ item.product.name }}</a>
                                                 </div>
                                                 <div class="cart-meta-text">
-                                                    Qty: 2
+                                                    Qty: {{item.quantity}}
                                                 </div>
-                                                <div class="cart-price d-md-none">
-                                                    <span class="money fw-500">$99.00</span>
 
-                                                </div>
                                             </td>
                                             <td class="cart-price cart-flex-item text-center small-hide">
-<!--                                                <span class="money">$99.00</span>-->
                                                 {% if item.product.percentage_discount %}
                                                     <del><span class="money old-price">&#8358;{{item.product.price|floatformat:2|intcomma}}</span></del>  <span class="money">&#8358;{{item.product.discounted_price|floatformat:2|intcomma}}</span>
                                                 {% else %}
@@ -92,7 +88,7 @@
                                                         id="select{{ item.product.id }}"
                                                        value="{{ item.quantity }}"
                                                        title="Qty"
-                                                        data-step="0" />
+                                                         />
 
 
                                                         <a class="qtyBtn plus btn-number qtyplus quantity-plus update-cart"
@@ -103,7 +99,7 @@
 
                                                     </div>
                                                 </div>
-                                                <a href="#" title="Remove" class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
+                                                <a href="" title="Remove" data-index="{{item.product.id}}" data-url="{% url 'update_cart' %}" class="removeMb delete-product d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
                                             </td>
                                             <td class="cart-price cart-flex-item text-center small-hide">
                                                 <span class="money fw-500">&#8358;{{ item.total_price|floatformat:2|intcomma }}</span>
@@ -116,7 +112,7 @@
                                         <tr>
                                             <td colspan="3" class="text-start"><a href="{% url 'shop' %}" class="btn btn-outline-secondary btn-sm cart-continue"><i class="icon anm anm-angle-left-r me-2 d-none"></i> Continue shopping</a></td>
                                             <td colspan="3" class="text-end">
-                                                <button type="submit" name="clear" class="btn btn-outline-secondary btn-sm small-hide"><i class="icon anm anm-times-r me-2 d-none"></i> Clear Shopping Cart</button>
+<!--                                                <button type="submit" name="clear" class="btn btn-outline-secondary btn-sm small-hide"><i class="icon anm anm-times-r me-2 d-none"></i> Clear Shopping Cart</button>-->
 <!--                                                <button type="submit" name="update" class="btn btn-secondary btn-sm cart-continue ms-2"><i class="icon anm anm-sync-ar me-2 d-none"></i> Update Cart</button>-->
                                             </td>
                                         </tr>

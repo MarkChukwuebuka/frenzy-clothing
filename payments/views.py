@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.views import View
@@ -151,18 +152,22 @@ class CreateListOrderView(View, CustomRequestUtil):
 
 
 # Create your views here.
-class RetrieveUpdateDeleteOrderView(View, CustomRequestUtil):
-    template_name = "order-detail.html"
-    context_object_name = 'order'
+class RetrieveUpdateDeleteOrderView(View):
+    def get(self, request, ref):
 
-    def get(self, request, *args, **kwargs):
-        order_service = OrderService(self.request)
+        product_service = ProductService(request)
 
-        self.extra_context_data = {
-            "title": "Order"
+        products_with_annotations = product_service.get_base_query()
+
+        order = Order.objects.prefetch_related(
+            Prefetch(
+                'items__product',
+                queryset=products_with_annotations
+            )
+        ).filter(ref=ref).first()
+
+        context = {
+            'order': order,
+            'title': "Order Details",
         }
-
-        return self.process_request(
-            request, target_function=order_service.fetch_single, ref=kwargs.get("ref")
-        )
-
+        return render(request, "order-details.html", context)

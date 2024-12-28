@@ -1,6 +1,5 @@
 from django.views import View
 
-from products.models import Category
 from products.services.product_service import ProductService
 from services.util import CustomRequestUtil
 
@@ -47,7 +46,7 @@ class FAQView(View, CustomRequestUtil):
 
 
 class AboutView(View, CustomRequestUtil):
-    template_name = "emails/payment-verified.html"
+    template_name = "about.html"
     extra_context_data = {
         "title": "About Us",
     }

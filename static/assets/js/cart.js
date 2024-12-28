@@ -36,7 +36,6 @@ $(document).on('click', '.delete-product', function(e){
   const url = $(this).data('url');
   const productId = $(this).data('index');
 
-
   $.ajax({
   type: 'POST',
   url: url,
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var productId = input.id.replace('select', ''); // Extract product ID from input field ID
 
             if (!isNaN(currentValue) && currentValue > 1) {
-                input.value = currentValue - 1;
+                input.value = currentValue - 0;
             } else {
                 input.value = 1; // Prevent going below 1
             }
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var productId = input.id.replace('select', ''); // Extract product ID from input field ID
 
             if (!isNaN(currentValue)) {
-                input.value = currentValue + 1;
+                input.value = currentValue + 0;
             } else {
                 input.value = 1; // If the input value is not a number, set it to 1
             }

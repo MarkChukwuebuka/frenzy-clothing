@@ -29,7 +29,7 @@ class Order(BaseModel):
     lga = models.CharField(max_length=250, default="")
     phone = models.CharField(max_length=250, default="")
     paid = models.BooleanField(default=False)
-    total_cost = models.IntegerField(default=0)
+    total_cost = models.FloatField(default=0.0)
     status = models.CharField(max_length=25, choices=StatusChoices.choices, default=StatusChoices.ordered)
     ref = models.CharField(max_length=250, null=True, blank=True)
 
@@ -95,7 +95,7 @@ class Payment(BaseModel):
                         'ref' : self.ref,
                         'amount' : self.amount
                     }
-                    send_email('payment-verified.html', context, 'Payment Verified', self.email)
+                    send_email('emails/payment-verified.html', context, 'Payment Verified', self.email)
 
         super().save(*args, **kwargs)
 

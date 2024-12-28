@@ -1,0 +1,130 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block marquee %}{% endblock marquee %}
+
+{% block content %}
+
+
+            <!-- Body Container -->
+            <div id="page-content"> 
+                <!--Page Header-->
+                <div class="page-header text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
+                                <div class="page-title"><h1>Order Details</h1></div>
+                                <!--Breadcrumbs-->
+                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="main-title"><i class="icon anm anm-angle-right-l"></i>{{order.ref}}</span></div>
+                                <!--End Breadcrumbs-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Page Header-->
+
+                <!--Main Content-->
+                <div class="container">
+                    {% if cart %}
+                    <div class="row">
+                        <!--Cart Content-->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 main-col">
+<!--                            <div class="alert alert-success py-2 alert-dismissible fade show cart-alert" role="alert">-->
+<!--                                <i class="align-middle icon anm anm-truck icon-large me-2"></i><strong class="text-uppercase">Congratulations!</strong> You've got free shipping!-->
+<!--                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--                            </div>-->
+                            <!--End Alert msg-->
+
+                            <!--Cart Form-->
+
+                            <form action="#" method="post" class="cart-table table-bottom-brd">
+                                <table class="table align-middle">
+                                    <thead class="cart-row cart-header small-hide position-relative">
+                                        <tr>
+                                            <th colspan="2" class="text-start">Product</th>
+                                            <th class="text-center">Price</th>
+                                            <th class="text-center">Quantity</th>
+                                            <th class="text-center">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in order.items.all %}
+                                        <tr class="cart-row cart-flex position-relative">
+                                            <td class="cart-image cart-flex-item">
+                                                <a href="{% url 'product-detail' item.product.id %}"><img class="cart-image rounded-0 blur-up lazyload" data-src="{{ item.product.cover_image.url }}" src="{{ item.product.cover_image.url }}" alt="Sunset Sleep Scarf Top" width="120" height="170" /></a>
+                                            </td>
+                                            <td class="cart-meta small-text-left cart-flex-item">
+                                                <div class="list-view-item-title">
+                                                    <a href="{% url 'product-detail' item.product.id %}">{{ item.product.name }}</a>
+                                                </div>
+
+                                            </td>
+                                            <td class="cart-price cart-flex-item text-center small-hide">
+<!--                                                <span class="money">$99.00</span>-->
+                                                {% if item.product.percentage_discount %}
+                                                    <del><span class="money old-price">&#8358;{{item.product.price|floatformat:2|intcomma}}</span></del>  <span class="money">&#8358;{{item.product.discounted_price|floatformat:2|intcomma}}</span>
+                                                {% else %}
+                                                    <span class="money">&#8358;{{item.product.price|floatformat:2|intcomma}}</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="cart-update-wrapper cart-flex-item text-end text-md-center">
+                                                <div class="cart-qty d-flex justify-content-end justify-content-md-center">
+                                                    <div class="qtyField">
+
+                                                        <p>{{ item.quantity }}</p>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="cart-price cart-flex-item text-center small-hide">
+                                                <span class="money fw-500">&#8358;{{ item.price|floatformat:2|intcomma }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table> 
+                            </form>    
+                            <!--End Cart Form-->
+                        </div>
+                        <!--End Cart Content-->
+
+                        <!--Cart Sidebar-->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart-footer">
+                            <div class="cart-info sidebar-sticky">
+                                <div class="cart-order-detail cart-col">
+                                    <div class="row g-0 border-bottom pb-2">
+                                        <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Payment Status</strong></span>
+                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">{% if order.payment.verified %}Paid{% else %}Pending{% endif %}</span></span>
+                                    </div>
+                                    <div class="row g-0 border-bottom py-2">
+                                        <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Order Status</strong></span>
+                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">{{order.status}}</span></span>
+                                    </div>
+
+                                    <div class="row g-0 pt-2">
+                                        <span class="col-6 col-sm-6 cart-subtotal-title fs-6"><strong>Total</strong></span>
+                                        <span class="col-6 col-sm-6 cart-subtotal-title fs-5 cart-subtotal text-end text-primary"><b class="money">&#8358;{{ order.total_cost|floatformat:2|intcomma }}</b></span>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Cart Sidebar-->
+                    </div>
+                    {% else %}
+                        <h4>You have no items in your cart now</h4>
+                    {% endif %}
+                </div>
+                <!--End Main Content-->
+
+            </div>
+            <!-- End Body Container -->
+
+{% endblock content %}

@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('crm.urls')),
     path('', include('cart.urls')),
     path('', include('payments.urls')),
+    path('exchange/', include('exchange.urls')),
 ]

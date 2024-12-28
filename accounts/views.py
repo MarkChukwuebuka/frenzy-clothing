@@ -3,7 +3,7 @@ from django.views import View
 
 from accounts.services.auth_service import AuthService
 from accounts.services.user_service import UserService
-from payments.models import Order
+from payments.models import Order, Payment
 from payments.services.order_service import OrderService
 from products.services.wishlist_service import WishlistService
 from services.util import CustomRequestUtil
@@ -72,7 +72,7 @@ class UserDashboardView(View, CustomRequestUtil):
     }
 
     def get(self, request, *args, **kwargs):
-        completed_orders = Order.objects.filter(user=self.auth_user, paid=True).count() or 0
+        completed_orders = Payment.objects.filter(user=self.auth_user, verified=True).count() or 0
         pending_orders = Order.objects.filter(user=self.auth_user, paid=False).count() or 0
         orders_count = Order.objects.filter(user=self.auth_user).count() or 0
         wishlist_products = WishlistService(request).fetch_list()

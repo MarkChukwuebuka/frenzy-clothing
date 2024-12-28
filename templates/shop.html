@@ -128,7 +128,7 @@
                                                     <!--End Cart Button-->
 
                                                     <!--Wishlist Button-->
-                                                    <a href="" class="btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
+                                                    <a data-url="{% url 'add-remove-from-wishlist' %}" data-product-id="{{ product.id }}" class="add_to_wishlist btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
                                                     <!--End Wishlist Button-->
 
                                                 </div>
@@ -193,6 +193,38 @@
 
 
 <script>
+
+
+
+     document.querySelectorAll('.add_to_wishlist').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        var productId = this.getAttribute('data-product-id');
+        var url = this.getAttribute('data-url');
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'add'
+            },
+            success: function(response) {
+                // Handle the success, like updating the wishlist count or showing a message
+                console.log('Product added to wishlist');
+                location.reload();
+            },
+            error: function(xhr, errmsg, err) {
+                // Handle the error
+                console.error('An error occurred while adding the product to wishlist');
+            }
+        });
+    });
+});
+
+
 
 
     document.querySelectorAll('.add_to_cart_button').forEach(function(button) {

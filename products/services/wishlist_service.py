@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import F, Q
+from django.db.models import F, Q, Prefetch
 
+from products.services.product_service import ProductService
 from services.util import CustomRequestUtil
 
 
@@ -28,14 +29,23 @@ class WishlistService(CustomRequestUtil, LoginRequiredMixin):
 
     def fetch_list(self):
         from products.models import Wishlist
+        product_service = ProductService(self.request)
+
+        products_with_annotations = product_service.get_base_query()
         q = Q(user=self.auth_user)
 
-        return Wishlist.available_objects.filter(q).values(
+        return Wishlist.available_objects.prefetch_related(
+            Prefetch(
+                'wishlist_items__product',
+                queryset=products_with_annotations
+            )
+        ).filter(q).values(
             "product_id",
             product_name=F("product__name"), product_availability=F("product__availability"),
             product_price=F("product__price"), product_image=F("product__cover_image")
 
         ).order_by('-created_at')
+
 
 
     def hard_delete(self, wishlist_item):

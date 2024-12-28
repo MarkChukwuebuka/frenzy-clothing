@@ -74,7 +74,7 @@ class ProductReview(BaseModel):
 
 class Wishlist(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="wishlisted_by")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="wishlist_items")
 
     class Meta:
         unique_together = ('user', 'product')

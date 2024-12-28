@@ -1,4 +1,6 @@
 {% load static %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
             <!--Footer-->
             <div class="footer">
                 <div class="newsletterbg clearfix">
@@ -53,7 +55,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-contact">
                                 <h4 class="h4">Contact Us</h4>
-                                <p class="{% static 'address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> 55 Gallaxy Enque, 2568 steet, 23568 NY</p>
+                                <p class="{% static 'address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> Abuja, Nigeria</p>
                                 <p class="phone d-flex align-items-center"><i class="icon anm anm-phone-l"></i>  <b class="me-1 d-none">Phone:</b> <a href="tel:401234567890">(+40) 123 456 7890</a></p>
                                 <p class="email d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> <b class="me-1 d-none">Email:</b> <a href="mailto:support@fr3e.store">support@fr3e.store</a></p>
                                 <ul class="list-inline social-icons mt-3">
@@ -104,16 +106,18 @@
                 <div class="menubar-search menubar-item">
                     <a href="{% url 'home' %}"><span class="menubar-icon anm anm-home-l"></span><span class="menubar-label">Home</span></a>
                 </div>
-                <div class="menubar-wish menubar-item">
-                    <a href="{% url 'wishlist' %}">
-                        <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-heart-l"></i></span>
-                        <span class="menubar-label">Wishlist</span>
-                    </a>
-                </div>
+
                 <div class="menubar-cart menubar-item">
                     <a href="{% url 'cart' %}" class="btn-minicart" >
                         <span class="span-count position-relative text-center"><i class="menubar-icon icon anm anm-cart-l"></i><span class="cart-count counter menubar-count">{{ cart|length }}</span></span>
                         <span class="menubar-label">Cart</span>
+                    </a>
+                </div>
+
+                <div class="menubar-wish menubar-item">
+                    <a href="{% url 'exchange' %}">
+                        <span class="span-count position-relative text-center"><i class="menubar-icon icon fas fa-coins"></i></span>
+                        <span class="menubar-label">Exchange</span>
                     </a>
                 </div>
             </div>
