@@ -11,9 +11,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
-                                <div class="page-title"><h1>Exchange</h1></div>
+                                <div class="page-title"><h1>Transactions</h1></div>
                                 <!--Breadcrumbs-->
-                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i>Fr3e Exchange</span></div>
+                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i><a href="{% url 'exchange' %}" title="Back to the home page">Exchange</a></span><span class="title"><i class="icon anm anm-angle-right-l"></i>Transactions</span></div>
                                 <!--End Breadcrumbs-->
                             </div>
                         </div>
@@ -26,17 +26,34 @@
                         <div class="row text-center">
                                 <div class="inner h-100 text-center">
 
-                                        <h2 class="text-center fs-4 mb-3">Welcome To Fr3e Exchange!!!</h2>
-                                        <p class="text-center mb-4">The best place to trade your coins...</p>
-
                                         <div class="row">
-                                            <div class=" col mb-0">
-                                                <a href="{% url 'buy' %}" class="btn btn-lg btn-primary">Buy</a>
-                                            </div>
+                                            {% include 'partials/messages.html' %}
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">Reference ID</th>
+                                                  <th scope="col">Amount(&#8358;)</th>
+                                                  <th scope="col">Amount($)</th>
+                                                  <th scope="col">Transaction Type</th>
+                                                  <th scope="col">Status</th>
+                                                  <th scope="col">View</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
 
-                                            <div class=" col mb-0">
-                                                <a href="{% url 'sell' %}" class="btn btn-lg btn-secondary">Sell</a>
-                                            </div>
+                                                {% for transaction in transactions %}
+                                                <tr>
+                                                  <th scope="row">{{transaction.ref}}</th>
+                                                  <td>&#8358;{{transaction.amount_in_ngn}}</td>
+                                                  <td>${{transaction.amount_in_usd}}</td>
+                                                  <td>{{transaction.trans_type}}</td>
+                                                  <td>{{transaction.status}}</td>
+                                                  <td><a href="" class="view"><i class="icon anm anm-eye btn-link fs-6"></i></a></td>
+                                                </tr>
+                                                {% endfor %}
+
+                                              </tbody>
+                                            </table>
                                         </div>
 
                                 </div>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ExchangeView, BuyView, SellView
+from .views import ExchangeView, BuyView, SellView, TransactionView
 
 urlpatterns = [
     path('', ExchangeView.as_view(), name='exchange'),

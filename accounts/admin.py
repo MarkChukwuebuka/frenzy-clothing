@@ -16,7 +16,7 @@ class RoleAdmin(BaseAdmin):
 class UserAdmin(BaseAdmin):
     list_display = ["email", "first_name", "last_name"] + BaseAdmin.list_display
     search_fields = ["email", "first_name", "last_name"]
-    readonly_fields = ["password"] + BaseAdmin.readonly_fields
+    readonly_fields = ["password"]
     list_filter = ["user_type"]
-    autocomplete_fields = ["roles"] + BaseAdmin.autocomplete_fields
+    autocomplete_fields = ["roles"]
 

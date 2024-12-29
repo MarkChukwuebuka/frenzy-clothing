@@ -1,6 +1,6 @@
 from django.views import View
 
-from exchange.models import Rate
+from exchange.models import Rate, Coin
 from exchange.services.transaction_service import TransactionService
 from payments.models import BankAccount
 from services.util import CustomRequestUtil
@@ -27,12 +27,13 @@ class BuyView(View, CustomRequestUtil):
     def get(self, request, *args, **kwargs):
         self.extra_context_data['buy_rate'] = Rate.objects.first().buy_rate
         self.extra_context_data['bank'] = BankAccount.objects.first()
+        self.extra_context_data['coins'] = Coin.objects.all()
 
 
         return self.process_request(request)
 
     def post(self, request, *args, **kwargs):
-
+        self.template_name = None
         self.extra_context_data = {
             "title": "Transactions",
         }
@@ -69,6 +70,7 @@ class SellView(View, CustomRequestUtil):
     def get(self, request, *args, **kwargs):
         self.extra_context_data['sell_rate'] = Rate.objects.first().sell_rate
         self.extra_context_data['bank'] = BankAccount.objects.first()
+        self.extra_context_data['coins'] = Coin.objects.all()
 
         return self.process_request(request)
 
@@ -111,4 +113,4 @@ class TransactionView(View, CustomRequestUtil):
     def get(self, request, *args, **kwargs):
         trxn_service = TransactionService(self.request)
 
-        return self.process_request(request, target_function=trxn_service.create_single,)
+        return self.process_request(request, target_function=trxn_service.fetch_list)

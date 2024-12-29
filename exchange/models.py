@@ -1,5 +1,6 @@
 from cloudinary.models import CloudinaryField
 from django.db import models
+from django.utils.translation.template import blankout
 
 from crm.models import BaseModel
 from exchange.services.transaction_service import generate_trxn_ref
@@ -10,6 +11,11 @@ class StatusChoices(models.TextChoices):
     completed = 'Completed'
     declined = 'Declined'
 
+class CoinSymbol(models.TextChoices):
+    bitcoin = 'bitcoin'
+    ethereum = 'ethereum'
+    tether = 'tether'
+
 class TransTypeChoices(models.TextChoices):
     buy = 'Buy'
     sell = 'Sell'
@@ -19,7 +25,8 @@ class TransTypeChoices(models.TextChoices):
 class Coin(BaseModel):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255, null=True, blank=True)
-    qr_code = CloudinaryField('qr_code')
+    symbol = models.CharField(max_length=255, choices=CoinSymbol.choices, default=CoinSymbol.tether)
+    qr_code = CloudinaryField('qr_code', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -40,9 +47,10 @@ class Transaction(BaseModel):
     amount_in_crypto = models.FloatField(null=True, blank=True)
     ref = models.CharField(max_length=255, default=generate_trxn_ref)
     user = models.ForeignKey("accounts.User", related_name="transactions", on_delete=models.CASCADE)
+    receipt = CloudinaryField("receipt", null=True, blank=True)
 
     def __str__(self):
-        return self.user.name
+        return self.ref
 
 
 class Rate(models.Model):

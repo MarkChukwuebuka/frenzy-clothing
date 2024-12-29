@@ -14,7 +14,7 @@ class WishlistService(CustomRequestUtil, LoginRequiredMixin):
         error = None
         product = payload.get("product")
 
-        wishlist_item, is_created = Wishlist.available_objects.get_or_create(
+        wishlist_item, is_created = Wishlist.objects.get_or_create(
             user=self.auth_user,
             product_id=product,
         )
@@ -34,7 +34,7 @@ class WishlistService(CustomRequestUtil, LoginRequiredMixin):
         products_with_annotations = product_service.get_base_query()
         q = Q(user=self.auth_user)
 
-        return Wishlist.available_objects.prefetch_related(
+        return Wishlist.objects.prefetch_related(
             Prefetch(
                 'wishlist_items__product',
                 queryset=products_with_annotations

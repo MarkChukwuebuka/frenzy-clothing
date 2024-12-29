@@ -28,9 +28,9 @@ class ProductService(CustomRequestUtil):
 
     def get_base_query(self):
         from products.models import Product
-        qs = Product.available_objects.prefetch_related(
+        qs = Product.objects.prefetch_related(
             "categories", "tags"
-        ).order_by("rating", "-updated_at")
+        ).order_by("rating")
 
         qs = qs.annotate(
             discounted_price=Case(
@@ -62,13 +62,13 @@ class ProductService(CustomRequestUtil):
         from products.models import ProductReview
 
         # Aggregate data for average rating and ratings distribution
-        ratings_data = ProductReview.available_objects.filter(product_id=product_id).aggregate(
+        ratings_data = ProductReview.objects.filter(product_id=product_id).aggregate(
             avg_rating=Avg('rating'),
             total_reviews=Count('id'),
         )
 
         # Distribution of ratings (e.g., 5 stars, 4 stars, etc.)
-        rating_distribution = ProductReview.available_objects.filter(product_id=product_id).values(
+        rating_distribution = ProductReview.objects.filter(product_id=product_id).values(
             'rating'
         ).annotate(
             count=Count('id')

@@ -1,5 +1,7 @@
 {% extends 'partials/base.html' %}
 
+{% load humanize %}
+
 {% block marquee %}{% endblock marquee %}
 
 {% block content %}
@@ -33,64 +35,65 @@
                         <div class="row text-center">
                                 <div class="inner h-100 text-center">
 
-                                        <form method="POST" enctype="multipart/form-data">
+                                        <form method="POST" class="row g-3" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <h3 class="mb-3">Rate : &#8358;{{ buy_rate }}</h3>
-                                            <div class="row mb-3">
-                                              <div class="col form-floating">
-                                                  <select class="form-select" id="floatingSelect" name="coin" required>
+                                            <h3 class="mb-3">Rate : &#8358;<span id="buy_rate">{{buy_rate}}</span></h3>
+
+                                              <div class="col-md-6 form-floating">
+                                                  <select class="form-select" id="coinSelect" name="coin" required>
                                                       <option selected>Select coin</option>
-                                                      {% for coin in coins %}
-                                                      <option value="{{coin.name}}">{{coin.name}}</option>
-                                                      {% endfor %}
+                                                      <option value="bitcoin">Bitcoin</option>
+                                                      <option value="ethereum">Ethereum</option>
+                                                      <option value="tether">USDT</option>
                                                     </select>
-                                                  <label style="margin-left:20px;" for="floatingSelect">Coin</label>
+                                                  <label style="margin-left:20px;" for="coinSelect">Coin</label>
                                               </div>
-                                              <div class="col form-floating">
-                                                  <input type="text" name="wallet-address" required id="floatingInput" class="form-control" placeholder="Receiving Address">
-                                                  <label style="margin-left:20px;" for="floatingInput">Receiving Address</label>
-                                              </div>
-
-
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                <div class="col form-floating">
-                                                  <input type="number" class="form-control" step="0.01" min="0" placeholder="Amount(NGN)">
-                                                  <label style="margin-left:20px;">Amount(NGN)</label>
+                                              <div class="col-md-6 form-floating">
+                                                  <input type="text" name="wallet-address" required id="walletAddress" class="form-control" placeholder="Receiving Address">
+                                                  <label style="margin-left:20px;" for="walletAddress">Receiving Address</label>
                                               </div>
 
-                                                <div class="col form-floating">
-                                                  <input type="number" step="0.01" min="0" class="form-control" placeholder="Amount($)">
-                                                  <label style="margin-left:20px;" class="ml-3">Amount($)</label>
-                                              </div>
-                                            </div>
+
+                                                <div class="col-md-4 form-floating">
+                                                  <input type="number" id="ngnAmount" name="amount-in-ngn" class="form-control" step="0.01" min="0" placeholder="Amount(NGN)">
+                                                  <label for="ngnAmount" style="margin-left:20px;">Amount(NGN)</label>
+                                                </div>
+
+                                                <div class="col-md-4 form-floating">
+                                                    <input id="usdAmount" type="number" name="amount-in-usd" step="0.01" min="0" class="form-control" placeholder="Amount($)" readonly>
+                                                    <label for="usdAmount" style="margin-left:20px;" class="ml-3">Amount($)</label>
+                                                </div>
+
+                                                <div class="col-md-4 form-floating">
+                                                    <input type="number" id="cryptoAmount" name="amount-in-crypto" step="0.01" min="0" class="form-control" placeholder="Amount($)" readonly>
+                                                    <label for="cryptoAmount" style="margin-left:20px;" class="ml-3">Amount in crypto</label>
+                                                </div>
+
                                             <h4 class="text-start mb-3 mt-3">Please make your payment to the account below</h4>
 
-                                            <div class="row mb-3">
-                                                <div class="col form-floating">
+                                                <div class="col-md-4 form-floating">
                                                   <input type="text" name="bank-name" class="form-control" value="{{bank.bank_name}}" readonly>
                                                   <label style="margin-left:20px;">Bank</label>
                                               </div>
 
-                                                <div class="col form-floating">
+                                                <input type="hidden" name="rate" class="form-control" value="{{buy_rate}}" readonly>
+
+                                                <div class="col-md-4 form-floating">
                                                   <input type="text" name="account-number" value="{{bank.account_number}}" class="form-control" readonly>
                                                   <label style="margin-left:20px;" class="ml-3">Account Number</label>
                                               </div>
-                                                <div class="col form-floating">
+                                                <div class="col-md-4 form-floating">
                                                   <input type="text" name="account-name" value="{{bank.account_name}}" class="form-control" readonly>
                                                   <label style="margin-left:20px;" class="mb-3">Account Name</label>
                                               </div>
-                                            </div>
 
-                                            <div class="mb-3 form-floating">
-
+                                            <div class="col-12 mb-3 form-floating">
                                               <input class="form-control" name="receipt" type="file" id="formFile">
                                                 <label for="formFile" class="form-label">Payment Receipt</label>
                                             </div>
 
 
-                                          <button type="submit" class="btn btn-primary">Buy</button>
+                                          <button type="submit" class="btn btn-primary col-md-6 text-center">Buy</button>
                                         </form>
 
                                 </div>
@@ -102,4 +105,112 @@
             <!-- End Body Container -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        {% endblock content %}
+
+<script>
+
+
+    // Cached prices to reduce API calls
+const cachedPrices = {};
+
+// Buy rate passed from the server
+const buyRate = parseFloat('{{ buy_rate }}'); // Ensure buy_rate is passed correctly from Django
+
+// Form elements accessed by their IDs
+const ngnInput = document.getElementById('ngnAmount');
+const usdInput = document.getElementById('usdAmount');
+const cryptoInput = document.getElementById('cryptoAmount');
+const coinSelect = document.getElementById('coinSelect');
+
+// Function to fetch coin prices
+async function fetchCoinPrice(coin) {
+  if (cachedPrices[coin]) {
+    console.log(`Using cached price for ${coin}:`, cachedPrices[coin]);
+    return cachedPrices[coin];
+  }
+
+  const apiUrl = `https://api.coincap.io/v2/assets/${coin}`;
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      console.error(`API request failed for ${coin}:`, response.status, response.statusText);
+      return null;
+    }
+
+    const data = await response.json();
+    if (!data || !data.data || !data.data.priceUsd) {
+      console.error(`Unexpected API response for ${coin}:`, data);
+      return null;
+    }
+
+    const price = parseFloat(data.data.priceUsd);
+    if (isNaN(price)) {
+      console.error(`Invalid price received for ${coin}:`, data.data.priceUsd);
+      return null;
+    }
+
+    cachedPrices[coin] = price; // Cache the price
+    console.log(`Fetched price for ${coin}:`, price);
+    return price;
+  } catch (error) {
+    console.error(`Error fetching price for ${coin}:`, error);
+    return null;
+  }
+}
+
+// Function to update the form fields based on input
+async function updateFields() {
+  const coin = coinSelect.value.toLowerCase();
+
+  // Get the values from the inputs
+  const ngnValue = parseFloat(ngnInput.value) || 0;
+  const usdValue = parseFloat(usdInput.value) || 0;
+  const cryptoValue = parseFloat(cryptoInput.value) || 0;
+
+  // Only update if the value is changed
+  if (ngnValue !== 0) {
+    const usd = ngnValue / buyRate;
+    usdInput.value = usd.toFixed(2); // Convert NGN to USD
+    const cryptoPrice = await fetchCoinPrice(coin);
+    if (cryptoPrice) {
+      const crypto = usd / cryptoPrice; // Convert USD to crypto
+      cryptoInput.value = crypto.toFixed(8); // Show crypto amount with high precision
+    }
+  } else if (usdValue !== 0) {
+    const ngn = usdValue * buyRate;
+    ngnInput.value = ngn.toFixed(2); // Convert USD to NGN
+    const cryptoPrice = await fetchCoinPrice(coin);
+    if (cryptoPrice) {
+      const crypto = usdValue / cryptoPrice; // Convert USD to crypto
+      cryptoInput.value = crypto.toFixed(8); // Show crypto amount with high precision
+    }
+  } else if (cryptoValue !== 0) {
+    const coinPrice = await fetchCoinPrice(coin);
+    if (coinPrice) {
+      const usd = cryptoValue * coinPrice; // Convert crypto to USD
+      usdInput.value = usd.toFixed(2); // Convert crypto to USD
+      const ngn = usd * buyRate; // Convert USD to NGN
+      ngnInput.value = ngn.toFixed(2); // Show NGN amount
+    }
+  }
+}
+
+// Debounce setup to wait 1 second after user stops typing
+let debounceTimeout;
+function debounceUpdate() {
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(updateFields, 1000); // 1000 ms (1 second) delay
+}
+
+// Event listeners for inputs to update other fields with debouncing
+ngnInput.addEventListener('input', debounceUpdate);
+usdInput.addEventListener('input', debounceUpdate);
+cryptoInput.addEventListener('input', debounceUpdate);
+coinSelect.addEventListener('change', debounceUpdate);
+
+
+
+</script>
+
+
+{% endblock content %}

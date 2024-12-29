@@ -12,7 +12,7 @@ class ProductReviewService(CustomRequestUtil):
         review = payload.get("review")
         product = payload.get("product")
 
-        product_review, is_created = ProductReview.available_objects.update_or_create(
+        product_review, is_created = ProductReview.objects.update_or_create(
             user=self.auth_user,
             product=product,
             defaults=dict(
@@ -21,7 +21,7 @@ class ProductReviewService(CustomRequestUtil):
             )
         )
 
-        average_rating = ProductReview.available_objects.filter(product=product).aggregate(
+        average_rating = ProductReview.objects.filter(product=product).aggregate(
             avg_rating=Avg("rating")
         )["avg_rating"]
 
@@ -38,7 +38,7 @@ class ProductReviewService(CustomRequestUtil):
         from products.models import ProductReview
         q = Q(product_id=product_id)
 
-        return ProductReview.available_objects.filter(q).values(
+        return ProductReview.objects.filter(q).values(
             "review", "rating", "updated_at",
             first_name=F("user__first_name"),
             last_name=F("user__last_name")

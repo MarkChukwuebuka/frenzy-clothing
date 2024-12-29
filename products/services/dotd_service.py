@@ -16,12 +16,12 @@ class DOTDService(CustomRequestUtil):
 
 
     def get_base_query(self):
-        return DealOfTheDay.available_objects.select_related("product")
+        return DealOfTheDay.objects.select_related("product")
 
     def toggle_active_state(self):
 
         now = timezone.now()
-        for deal in DealOfTheDay.available_objects:
+        for deal in DealOfTheDay.objects:
             deal.is_active = True if deal.start_time <= now <= deal.end_time else False
             deal.save()
 
@@ -35,4 +35,4 @@ class TopShopperService(CustomRequestUtil):
 
 
     def get_base_query(self):
-        return TopShopper.available_objects.order_by('-id')
+        return TopShopper.objects.order_by('-id')

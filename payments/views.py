@@ -19,7 +19,7 @@ from .services.order_service import OrderService
 def verify_payment(request, ref):
     # try:
     cart = CartService(request)
-    payment = Payment.available_objects.filter(ref=ref).first()
+    payment = Payment.objects.filter(ref=ref).first()
     verified = payment.verify_payment()
 
     if verified:
@@ -112,7 +112,7 @@ def start_order(request):
                                                  quantity=quantity_in_cart
                                                  )
 
-        payment = Payment.available_objects.create(
+        payment = Payment.objects.create(
             amount=total_cost, email=user.email, user=user, order=order, receipt=receipt, ref=order.ref
         )
 

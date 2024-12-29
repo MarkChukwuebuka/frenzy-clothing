@@ -34,7 +34,7 @@ def generate_order_ref(prefix="ORD"):
 class OrderService(CustomRequestUtil):
 
     def create_single(self, payload):
-        order = Order.available_objects.create(
+        order = Order.objects.create(
             user=self.auth_user,
             first_name=payload.get("first_name"),
             last_name=payload.get("last_name"),
@@ -52,7 +52,7 @@ class OrderService(CustomRequestUtil):
         return self.get_base_query().filter(user=self.auth_user)
 
     def get_base_query(self):
-        qs = Order.available_objects.select_related("user").prefetch_related("items__product")
+        qs = Order.objects.select_related("user").prefetch_related("items__product")
 
         return qs
 

@@ -2,10 +2,6 @@ import random
 import string
 from datetime import datetime
 
-from django.utils import timezone
-
-from exchange.models import Transaction
-from payments.models import Order
 from services.util import CustomRequestUtil
 
 
@@ -35,7 +31,9 @@ def generate_trxn_ref(prefix="ECH"):
 class TransactionService(CustomRequestUtil):
 
     def create_single(self, payload):
-        trxn = Transaction.available_objects.create(
+        from exchange.models import Transaction
+
+        trxn = Transaction.objects.create(
             user=self.auth_user,
             coin=payload.get("coin"),
             wallet_address=payload.get("wallet_address"),
@@ -49,13 +47,17 @@ class TransactionService(CustomRequestUtil):
             amount_in_crypto=payload.get("amount_in_crypto"),
             ref=generate_trxn_ref()
         )
-        return trxn
+        message = f"Your order to {payload.get("trans_type")} N{payload.get("amount_in_ngn")} worth of {payload.get("coin")} is being processed."
+
+        return message, None
 
     def fetch_list(self):
-        return self.get_base_query().filter(user=self.auth_user)
+        return self.get_base_query().filter(user=self.auth_user).order_by('-created_at')
 
     def get_base_query(self):
-        qs = Transaction.available_objects.select_related("user")
+        from exchange.models import Transaction
+
+        qs = Transaction.objects.select_related("user")
 
         return qs
 
