@@ -47,7 +47,7 @@ class TransactionService(CustomRequestUtil):
             amount_in_crypto=payload.get("amount_in_crypto"),
             ref=generate_trxn_ref()
         )
-        message = f"Your order to {payload.get("trans_type")} N{payload.get("amount_in_ngn")} worth of {payload.get("coin")} is being processed."
+        message = f'Your order to {payload.get("trans_type")} N{payload.get("amount_in_ngn")} worth of {payload.get("coin")} is being processed.'
 
         return message, None
 
