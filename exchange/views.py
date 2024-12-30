@@ -75,7 +75,7 @@ class SellView(View, CustomRequestUtil):
         return self.process_request(request)
 
     def post(self, request, *args, **kwargs):
-
+        self.template_name = None
         self.extra_context_data = {
             "title": "Transactions",
         }

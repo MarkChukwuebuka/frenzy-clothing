@@ -20,9 +20,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
-                                <div class="page-title"><h1>Buy Crypto</h1></div>
+                                <div class="page-title"><h1>Sell Crypto</h1></div>
                                 <!--Breadcrumbs-->
-                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i><a href="{% url 'exchange' %}" title="Back to the home page">Exchange</a></span><span class="title"><i class="icon anm anm-angle-right-l"></i>Buy Crypto</span></div>
+                                <div class="breadcrumbs"><a href="{% url 'home' %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i><a href="{% url 'exchange' %}" title="Back to the home page">Exchange</a></span><span class="title"><i class="icon anm anm-angle-right-l"></i>Sell Crypto</span></div>
                                 <!--End Breadcrumbs-->
                             </div>
                         </div>
@@ -37,21 +37,20 @@
 
                                         <form method="POST" class="row g-3" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <h3 class="mb-3">Rate : &#8358;<span id="buy_rate">{{buy_rate}}</span></h3>
+                                            <h3 class="mb-3">Rate : &#8358;<span id="buy_rate">{{sell_rate}}</span></h3>
 
                                               <div class="col-md-6 form-floating">
-                                                  <select class="form-select" id="coinSelect" name="coin" required>
+                                                  <select onchange="updateWalletAndBarcode()" class="form-select" id="coinSelect" name="coin" required>
                                                       <option selected>Select coin</option>
                                                       {% for coin in coins %}
-                                                      <option value="{{coin.symbol}}">{{coin.name}}</option>
+                                                        <option value="{{coin.symbol}}">{{coin.name}}</option>
                                                       {% endfor %}
-
                                                     </select>
                                                   <label style="margin-left:20px;" for="coinSelect">Coin</label>
                                               </div>
                                               <div class="col-md-6 form-floating">
-                                                  <input type="text" name="wallet-address" required id="walletAddress" class="form-control" placeholder="Receiving Address">
-                                                  <label style="margin-left:20px;" for="walletAddress">Receiving Address</label>
+                                                  <input type="text" name="wallet-address" readonly id="walletAddress" class="form-control" value="{{coin.address}}">
+                                                  <label style="margin-left:20px;" for="walletAddress">Address</label>
                                               </div>
 
 
@@ -70,31 +69,32 @@
                                                     <label for="cryptoAmount" style="margin-left:20px;" class="ml-3">Amount in crypto</label>
                                                 </div>
 
-                                            <h4 class="text-start mb-3 mt-3">Please make your payment to the account below</h4>
 
-                                                <div class="col-md-4 form-floating">
-                                                  <input type="text" name="bank-name" class="form-control" value="{{bank.bank_name}}" readonly>
-                                                  <label style="margin-left:20px;">Bank</label>
-                                              </div>
-
-                                                <input type="hidden" name="rate" class="form-control" value="{{buy_rate}}" readonly>
-
-                                                <div class="col-md-4 form-floating">
-                                                  <input type="text" name="account-number" value="{{bank.account_number}}" class="form-control" readonly>
-                                                  <label style="margin-left:20px;" class="ml-3">Account Number</label>
-                                              </div>
-                                                <div class="col-md-4 form-floating">
-                                                  <input type="text" name="account-name" value="{{bank.account_name}}" class="form-control" readonly>
-                                                  <label style="margin-left:20px;" class="mb-3">Account Name</label>
-                                              </div>
 
                                             <div class="col-12 mb-3 form-floating">
                                               <input class="form-control" name="receipt" type="file" id="formFile">
-                                                <label for="formFile" class="form-label">Payment Receipt</label>
+                                                <label for="formFile" class="form-label">Transaction Receipt</label>
                                             </div>
 
+                                                <div class="col-md-4 form-floating">
+                                                  <input type="text" name="bank-name" class="form-control" >
+                                                  <label style="margin-left:20px;">Bank</label>
+                                              </div>
 
-                                          <button type="submit" class="btn btn-primary col-md-6 text-center">Buy</button>
+                                                <input type="hidden" name="rate" class="form-control" value="{{sell_rate}}" readonly>
+
+                                                <div class="col-md-4 form-floating">
+                                                  <input type="text" name="account-number" class="form-control" >
+                                                  <label style="margin-left:20px;" class="ml-3">Account Number</label>
+                                              </div>
+                                                <div class="col-md-4 form-floating">
+                                                  <input type="text" name="account-name" class="form-control" >
+                                                  <label style="margin-left:20px;" class="mb-3">Account Name</label>
+                                              </div>
+
+
+
+                                          <button type="submit" class="btn btn-primary col-md-6 text-center">Sell</button>
                                         </form>
 
                                 </div>
@@ -114,7 +114,7 @@
 const cachedPrices = {};
 
 // Buy rate passed from the server
-const buyRate = parseFloat('{{ buy_rate }}'); // Ensure buy_rate is passed correctly from Django
+const buyRate = parseFloat('{{ sell_rate }}'); // Ensure sell_rate is passed correctly from Django
 
 // Form elements accessed by their IDs
 const ngnInput = document.getElementById('ngnAmount');
@@ -213,5 +213,26 @@ coinSelect.addEventListener('change', debounceUpdate);
 
 </script>
 
+
+<script>
+function updateWalletAndBarcode() {
+    var coinMethodSelect = document.getElementById("coinSelect");
+    var walletAddressInput = document.getElementById("walletAddress");
+
+    // Map coin symbols to wallet addresses
+    var coinDetails = {
+        {% for coin in coins %}
+        "{{coin.symbol}}": { walletAddress: "{{coin.address}}" },
+        {% endfor %}
+    };
+
+    // Get the selected coin symbol
+    var selectedCoin = coinMethodSelect.value;
+
+    // Update the wallet address
+    walletAddressInput.value = coinDetails[selectedCoin]?.walletAddress || "";
+}
+
+</script>
 
 {% endblock content %}
