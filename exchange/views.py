@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 
 from exchange.models import Rate, Coin
@@ -17,7 +18,7 @@ class ExchangeView(View, CustomRequestUtil):
         return self.process_request(request)
 
 
-class BuyView(View, CustomRequestUtil):
+class BuyView(LoginRequiredMixin, View, CustomRequestUtil):
     template_name = "buy.html"
     template_on_error = "buy.html"
     extra_context_data = {
@@ -60,7 +61,7 @@ class BuyView(View, CustomRequestUtil):
         )
 
 
-class SellView(View, CustomRequestUtil):
+class SellView(LoginRequiredMixin, View, CustomRequestUtil):
     template_name = "sell.html"
     template_on_error = "sell.html"
     extra_context_data = {
@@ -102,7 +103,7 @@ class SellView(View, CustomRequestUtil):
 
 
 
-class TransactionView(View, CustomRequestUtil):
+class TransactionView(LoginRequiredMixin, View, CustomRequestUtil):
     template_name = "transactions.html"
     context_object_name = "transactions"
 

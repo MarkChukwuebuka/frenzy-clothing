@@ -63,7 +63,7 @@ class UserSignupView(View, CustomRequestUtil):
         )
 
 
-class UserDashboardView(View, CustomRequestUtil):
+class UserDashboardView(LoginRequiredMixin, View, CustomRequestUtil):
     template_name = 'dashboard.html'
 
     extra_context_data = {
