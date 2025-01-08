@@ -21,6 +21,9 @@ input[type="radio"]:checked + .star-label i,
 input[type="radio"]:checked ~ .star-label i {
     color: #ffd700;
 }
+    .product-thumb a.active img {
+    border: 2px solid #4CAF50; /* Matches the button color */
+}
 
 </style>
 
@@ -791,5 +794,37 @@ input[type="radio"]:checked ~ .star-label i {
 
 
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get all thumbnail links
+        const thumbnails = document.querySelectorAll(".product-thumb a");
+        const mainImage = document.querySelector("#zoompro");
+
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Get the data-image and data-zoom-image attributes
+                const newImageSrc = this.getAttribute("data-image");
+                const newZoomImage = this.getAttribute("data-zoom-image");
+
+                // Update the main image's src and data-zoom-image
+                if (mainImage) {
+                    mainImage.setAttribute("src", newImageSrc);
+                    mainImage.setAttribute("data-zoom-image", newZoomImage);
+                }
+
+                // Remove 'active' class from all thumbnails
+                thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+                // Add 'active' class to the clicked thumbnail
+                this.classList.add("active");
+            });
+        });
+    });
+</script>
+
 
 {% endblock content %}
