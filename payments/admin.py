@@ -14,7 +14,7 @@ class OrderAdmin(BaseAdmin):
     list_display = [
         "user", "email", "total_cost", "paid", "status"
     ]
-    search_fields = ["address", "email", "state", "first_name"]
+    search_fields = ["address", "email", "state", "first_name", "ref"]
     list_filter = ["status", "paid"]
 
 

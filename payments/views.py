@@ -8,7 +8,7 @@ from django.views import View
 from cart.services.cart_service import CartService
 from products.models import Category
 from products.services.product_service import ProductService
-from services.util import CustomRequestUtil
+from services.util import CustomRequestUtil, send_email
 from .models import Payment, OrderItem, Order, BankAccount
 
 from django.http import JsonResponse
@@ -120,15 +120,20 @@ def start_order(request):
         order.save()
 
         context = {
+            'first_name': order.first_name,
+            'last_name': order.last_name,
             'title': 'Thank You',
             'items' : OrderItem.objects.filter(order=order),
             'order': order,
+            'ref': order.ref,
             'total_cost': total_cost,
             'payment': payment,
             "left_categories": left_categories,
             "right_categories": right_categories
         }
         cart.clear()
+        send_email('emails/order-initiated.html', context, 'Order Initiated', 'whoisfreee@gmail.com')
+
         return render(request, 'order-success.html', context)
 
     return render(request, 'checkout.html', context)

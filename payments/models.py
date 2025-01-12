@@ -43,10 +43,13 @@ class Order(BaseModel):
         if self.pk is not None:
             old_order = Order.objects.get(pk=self.pk)
             # Check if the status has changed to "shipped"
+            context = {
+                'name': self.first_name,
+                'ref': self.ref,
+                'amount': self.total_cost
+            }
             if old_order.status != self.status and self.status == StatusChoices.shipped:
-                #TODO: send mail to notify customer
-                pass
-                # print("shipped")
+                send_email('emails/order-shipped.html', context, 'Order Shipped', self.email)
 
         super().save(*args, **kwargs)
 
