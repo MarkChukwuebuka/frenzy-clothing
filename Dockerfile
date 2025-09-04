@@ -1,30 +1,39 @@
-ARG PYTHON_VERSION=3.12-slim
+# Use the latest official Python image as a base image
+FROM python:3.12-slim
 
-FROM python:${PYTHON_VERSION}
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# Set the working directory in the container
+WORKDIR /app
 
-# install psycopg2 dependencies.
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
+    netcat-openbsd \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /code
+# Install Python dependencies with performance improvements
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /code
+# Copy the project files to the working directory
+COPY . /app/
 
-COPY requirements.txt /tmp/requirements.txt
-RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
-COPY . /code
+# Copy the wait script and make it executable
+COPY wait-for-postgres.sh /wait-for-postgres.sh
+RUN chmod +x /wait-for-postgres.sh
 
-ENV SECRET_KEY "r9909XqwXXRHBubut4VwmVHX6jZWyCdTzWXamzIvXS9DwigmSb"
-RUN python manage.py collectstatic --noinput
+# Collect static files
+RUN python manage.py collectstatic --no-input
 
+# Expose the port your Django app runs on
 EXPOSE 8000
 
-CMD ["gunicorn","--bind",":8000","--workers","2","core.wsgi"]
+# Use ENTRYPOINT and CMD separately for better containerization practices
+ENTRYPOINT ["/bin/sh"]
+CMD ["/wait-for-postgres.sh"]
