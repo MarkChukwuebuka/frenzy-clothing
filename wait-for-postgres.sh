@@ -13,4 +13,4 @@ python manage.py makemigrations --no-input
 python manage.py migrate --no-input
 
 # Start Gunicorn
-gunicorn --bind 0.0.0.0:$PORT core.wsgi:application
+gunicorn --bind 0.0.0.0:8000 core.wsgi:application

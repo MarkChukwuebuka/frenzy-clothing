@@ -1,7 +1,0 @@
-Username:    postgres
-Password:    EYbTVDBLGiTUYvO
-Hostname:    frenzy-db.internal
-Flycast:     fdaa:1a:d521:0:1::4
-Proxy port:  5432
-Postgres port:  5433
-Connection string: postgres://postgres:EYbTVDBLGiTUYvO@frenzy-db.flycast:5432
