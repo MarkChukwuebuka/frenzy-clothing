@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             var input = this.parentElement.querySelector('input.input-qty');
             var currentValue = parseInt(input.value);
-            var productId = input.id.replace('select', ''); // Extract product ID from input field ID
+            var productId = input.id.replace('select', '');     // Extract product ID from input field ID
 
             if (!isNaN(currentValue) && currentValue > 1) {
                 input.value = currentValue - 0;
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
 $(document).on('click', '.update-cart', function(e) {
     e.preventDefault();

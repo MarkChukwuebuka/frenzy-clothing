@@ -25,7 +25,8 @@ class ProductReviewService(CustomRequestUtil):
             avg_rating=Avg("rating")
         )["avg_rating"]
 
-        product.update(rating=average_rating)
+        product.rating = average_rating
+        product.save(update_fields=['rating'])
 
         if not is_created:
             return "You've updated your review on this product", None
