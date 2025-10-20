@@ -5,6 +5,35 @@
     {% block content %}
 
 
+<style>
+.slideshow-wrapper,
+.slideshow-wrap,
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Responsive height */
+  max-height: 800px;
+  overflow: hidden;
+}
+
+/* Make images responsive without distortion */
+.slideshow-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintains aspect ratio, no stretch */
+  object-position: top;
+}
+
+/* Optional: For portrait images, ensure they scale nicely */
+@media (max-width: 767px) {
+  .slideshow-wrapper,
+  .slide {
+    height: 60vh; /* slightly shorter on mobile */
+  }
+}
+</style>
+
+
 
 
             <!-- Body Container -->
@@ -12,12 +41,23 @@
                 <!--Home Slideshow-->
                 <section class="slideshow slideshow-wrapper">
                     <div class="home-slideshow slick-arrow-dots">
-                        <div class="slide" style="height:800px !important;">
-                            <div class="slideshow-wrap" style="height:800px !important;">
-                                <picture>
-                                    <source style="height:800px !important;" media="(max-width:767px)" srcset="{% static 'assets/images/custom-5.jpg' %}" width="1150" height="800">
-                                    <img style="height:800px !important;" class="blur-up lazyload" src="{% static 'assets/images/custom-5.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
-                                </picture> 
+                        <div class="slide" style="">
+                            <div class="slideshow-wrap" style="">
+
+                                <picture style="">
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="{% static 'assets/images/custom-portrait-2.jpg' %}"
+                                      >
+                                      <!-- Desktop / landscape version -->
+                                      <source
+                                        media="(min-width: 768px)"
+                                        srcset="{% static 'assets/images/custom-landscape-2.png' %}"
+                                      >
+                                    <img style="" class="blur-up lazyload" src="{% static 'assets/images/custom-portrait-2.jpg' %}" alt="slideshow" title="" width="1920" height="400" />
+                                </picture>
+
+
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-left">
                                         <div class="slideshow-content-in">
@@ -34,12 +74,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slide" style="height:800px !important;">
-                            <div class="slideshow-wrap" style="height:800px !important;">
-                                <picture style="height:800px !important;">
-                                    <source style="height:800px !important;" media="(max-width:767px)" srcset="{% static 'assets/images/custom-2.jpg' %}" width="1150" height="400">
-                                    <img style="height:800px !important;" class="blur-up lazyload" src="{% static 'assets/images/custom-2.jpg' %}" alt="slideshow" title="" width="1920" height="400" />
-                                </picture>  
+                        <div class="slide" style="">
+                            <div class="slideshow-wrap" style="">
+
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="{% static 'assets/images/custom-portrait-5.jpg' %}"
+                                      >
+                                      <!-- Desktop / landscape version -->
+                                      <source
+                                        media="(min-width: 768px)"
+                                        srcset="{% static 'assets/images/custom-landscape-5.png' %}"
+                                      >
+                                    <img style="" class="blur-up lazyload" src="{% static 'assets/images/custom-portrait-5.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
+                                </picture>
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-right">
                                         <div class="slideshow-content-in">
@@ -56,10 +105,18 @@
                             </div>
                         </div>
                         <div class="slide">
-                            <div class="slideshow-wrap" style="height:800px !important;">
-                                <picture style="height:800px !important;">
-                                    <source style="height:800px !important;" media="(max-width:767px)" srcset="{% static 'assets/images/custom-1.jpg' %}" width="1150" height="800">
-                                    <img style="height:800px !important;" class="blur-up lazyload" src="{% static 'assets/images/custom-1.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
+                            <div class="slideshow-wrap" style="">
+                                <picture style="">
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="{% static 'assets/images/custom-portrait-1.jpg' %}"
+                                      >
+                                      <!-- Desktop / landscape version -->
+                                      <source
+                                        media="(min-width: 768px)"
+                                        srcset="{% static 'assets/images/custom-landscape-1.png' %}"
+                                      >
+                                    <img style="" class="blur-up lazyload" src="{% static 'assets/images/custom-portrait-1.jpg' %}" alt="slideshow" title="" width="1920" height="795" />
                                 </picture>  
                                 <div class="container">
                                     <div class="slideshow-content slideshow-overlay middle-right">
