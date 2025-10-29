@@ -92,7 +92,7 @@
             <!--Sticky Menubar Mobile-->
             <div class="menubar-mobile d-flex align-items-center justify-content-between d-lg-none">
                 <div class="menubar-shop menubar-item">
-                    <a href="shop-grid-view.html"><i class="menubar-icon anm anm-th-large-l"></i><span class="menubar-label">Shop</span></a>
+                    <a href="{% url 'shop' %}"><i class="menubar-icon anm anm-th-large-l"></i><span class="menubar-label">Shop</span></a>
                 </div>
                 <div class="menubar-account menubar-item">
                     {% if user.is_authenticated %}
