@@ -1,3 +1,5 @@
+import re
+
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.db.models import TextChoices, Q
@@ -75,12 +77,10 @@ class User(AbstractBaseUser, BaseModel):
         return self.get_full_name()
 
     def get_full_name(self):
-        return " ".join(
-            [
-                self.first_name or "",
-                self.last_name or "",
-            ]
-        ).replace("\s+", " ").strip()
+        full_name = " ".join(
+            filter(None, [self.first_name, self.last_name])
+        )
+        return re.sub(r"\s+", " ", full_name).strip()
 
     def has_permission(self, perm_name):
         if self.is_superuser:
