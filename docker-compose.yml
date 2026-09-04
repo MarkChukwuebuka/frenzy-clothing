@@ -1,41 +1,66 @@
-
 services:
+
   web:
     build: .
-    container_name: django_app
+    container_name: frenzy_clothing
     command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
+      - frenzy_static_volume:/app/staticfiles
+      - frenzy_media_volume:/app/media
+
     expose:
-      - 8000
+      - "8000"
+
     env_file:
       - .env
+
     depends_on:
       - db
+      - redis
+
+    networks:
+      - frenzy_clothing_network
+
 
   db:
     image: postgres:15
+    container_name: frenzy_clothing_db
+
     env_file:
       - .env
-    container_name: postgres_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx_server
-    ports:
-      - "80:80"
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-    depends_on:
-      - web
+      - frenzy_postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - frenzy_clothing_network
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: frenzy_clothing_redis
+
+    restart: unless-stopped
+
+    networks:
+      - frenzy_clothing_network
+
+
+networks:
+
+  frenzy_clothing_network:
+    name: frenzy_clothing_network
+
 
 volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
+
+  frenzy_postgres_data:
+    name: frenzy_postgres_data
+
+  frenzy_static_volume:
+    name: frenzy_static_volume
+
+  frenzy_media_volume:
+    name: frenzy_media_volume
