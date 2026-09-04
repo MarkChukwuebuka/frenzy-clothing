@@ -41,7 +41,6 @@ services:
   redis:
     image: redis:7-alpine
     container_name: frenzy_clothing_redis
-
     restart: unless-stopped
 
     networks:
@@ -49,13 +48,11 @@ services:
 
 
 networks:
-
   frenzy_clothing_network:
     name: frenzy_clothing_network
 
 
 volumes:
-
   frenzy_postgres_data:
     name: frenzy_postgres_data
 
