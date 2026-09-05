@@ -17,7 +17,7 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/frenzy-clothing
+            cd /var/www/frenzy_clothing
             git pull origin main
             docker compose down
             docker compose up --build -d
