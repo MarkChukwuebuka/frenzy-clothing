@@ -6,4 +6,3 @@ venv/
 .idea/
 creds.txt
 db.json
-data2.json
